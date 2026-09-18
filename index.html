@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>顧晉瑋｜資管作品集 Portfolio</title>
+  <meta name="description" content="靜宜資管 顧晉瑋 — GitHub 作品集索引（GitHub Pages）" />
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a2332;
+      --text: #e7ecf3;
+      --muted: #9aa8bc;
+      --accent: #5b9fd4;
+      --border: #2a3a4f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    header h1 { font-size: 1.75rem; margin: 0 0 0.35rem; }
+    header p { color: var(--muted); margin: 0 0 1.75rem; }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #243447;
+      color: var(--accent);
+      margin-right: 0.35rem;
+    }
+    .grid { display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    article {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+    }
+    article h2 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+    article p { margin: 0 0 0.75rem; color: var(--muted); font-size: 0.92rem; }
+    a.btn {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    a.btn:hover { text-decoration: underline; }
+    .note {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border-left: 3px solid var(--accent);
+      background: #15202b;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.8rem; }
+    code { font-size: 0.85em; background: #243447; padding: 0.1em 0.35em; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>顧晉瑋｜資訊管理作品集</h1>
+      <p>
+        靜宜大學 資訊管理學系 · GitHub：<strong>Miiduoa</strong><br />
+        決策支援／預測／競賽筆記 — 下列連結在推送後替換為實際 repo URL。
+      </p>
+      <span class="badge">繁中</span>
+      <span class="badge">GitHub Pages ready</span>
+      <span class="badge">未宣稱得獎</span>
+    </header>
+
+    <div class="grid">
+      <article>
+        <h2>retail-ops-dss</h2>
+        <p>零售營運決策支援：銷售預測、特徵重要度、規則式建議（Streamlit）。</p>
+        <a class="btn" href="https://github.com/Miiduoa/retail-ops-dss">GitHub →</a>
+      </article>
+
+      <article>
+        <h2>demand-sensing-lite</h2>
+        <p>多 SKU 合成需求 → sklearn 時間切分預測 → (s,S) 補貨模擬對照基線。</p>
+        <a class="btn" href="https://github.com/Miiduoa/demand-sensing-lite">GitHub →</a>
+      </article>
+
+      <article>
+        <h2>rail-ops-briefing-dss</h2>
+        <p>鐵道營運簡報面板：延誤風險／擁擠代理／What-if 槓桿與規則建議（學習向）。</p>
+        <a class="btn" href="https://github.com/Miiduoa/rail-ops-briefing-dss">GitHub →</a>
+      </article>
+
+      <article>
+        <h2>competition-lab</h2>
+        <p>競賽筆記與精簡基線：Kaggle、DrivenData、AI CUP、臺鐵數據力企劃（誠實記錄狀態）。</p>
+        <a class="btn" href="https://github.com/Miiduoa/competition-lab">GitHub →</a>
+      </article>
+    </div>
+
+    <div class="note">
+      <strong>校園／課程 repo（若有）</strong><br />
+      課堂作業或校園 GitLab／GitHub Classroom 專案若另開帳號或私有庫，請在此補上公開可分享連結；
+      目前索引以個人公開作品為主。Profile README：
+      <a class="btn" href="https://github.com/Miiduoa/Miiduoa">Miiduoa/Miiduoa</a>
+    </div>
+
+    <footer>
+      MIT 授權各專案見個別 repo · 本頁為靜態 <code>index.html</code>，可直接作為 GitHub Pages 來源。<br />
+      © 2026 顧晉瑋 · 本頁不宣稱任何競賽名次或得獎。
+    </footer>
+  </div>
+</body>
+</html>
