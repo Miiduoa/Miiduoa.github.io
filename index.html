@@ -320,7 +320,7 @@
 
           <a class="work" href="https://github.com/Miiduoa/byline">
             <div>
-              <span class="num">07 / DATA RELIABILITY</span>
+              <span class="num">08 / DATA RELIABILITY</span>
               <h3>Byline</h3>
               <p>把 CSV 的欄位、型別、缺值率、row count 與檔案指紋存成 contract；資料更新時先判斷 breaking change，再讓 pipeline 往下跑。</p>
             </div>
@@ -329,11 +329,20 @@
 
           <a class="work" href="https://github.com/Miiduoa/aortal">
             <div>
-              <span class="num">08 / API RELIABILITY</span>
+              <span class="num">09 / API RELIABILITY</span>
               <h3>Aortal</h3>
               <p>從真實 JSON sample 推導 API contract，遞迴檢查 required field、型別與 nullable；breaking change 直接用 exit code 擋在 CI。</p>
             </div>
             <div class="tags"><span class="tag">Node.js</span><span class="tag">API contract</span><span class="tag">Built-in tests</span></div>
+          </a>
+
+          <a class="work" href="https://github.com/Miiduoa/anyone">
+            <div>
+              <span class="num">10 / BACKEND RELIABILITY</span>
+              <h3>anyone — Anonymous Feedback Service</h3>
+              <p>匿名回饋不只要能送出：加入 Idempotency-Key、防濫刷、pending moderation、管理員邊界與 append-only audit trail，並刻意不把留言內容複製進 audit。</p>
+            </div>
+            <div class="tags"><span class="tag">Express</span><span class="tag">Idempotency</span><span class="tag">Moderation</span><span class="tag">Testing</span></div>
           </a>
         </div>
       </section>
@@ -368,6 +377,10 @@
           <a class="lab" href="https://github.com/Miiduoa/learnpy">
             <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、迴圈、條件與禁止 API，不把結構分析假裝成語意驗證。</p></div>
             <span class="lab-meta">STATIC ANALYSIS</span>
+          </a>
+          <a class="lab" href="https://github.com/Miiduoa/cs-textbook-site">
+            <div><h3>CS Notes Reader</h3><p>Offline-first 閱讀器：加權搜尋、Service Worker、localStorage 閱讀進度，加上 CI 內容完整性檢查。</p></div>
+            <span class="lab-meta">PWA / OFFLINE</span>
           </a>
           <a class="lab" href="https://github.com/Miiduoa/air">
             <div><h3>IoT Sensor Network Monitor</h3><p>檢查座標、資料新鮮度、異常值與重複上報，再找最近可用站點。</p></div>
