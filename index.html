@@ -141,7 +141,20 @@
       border:1px solid var(--line);border-radius:999px;padding:5px 10px;
       font-size:12px;color:#55524b;background:#f6f3ec
     }
-    .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .lab{
+      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;
+      padding:20px 0;border-top:1px solid var(--line);text-decoration:none;
+      transition:.18s ease
+    }
+    .lab:hover{padding-left:8px}
+    .lab h3{margin:0 0 6px;font-size:18px;letter-spacing:-.02em}
+    .lab p{margin:0;color:var(--muted);font-size:13px;max-width:520px}
+    .lab .lab-meta{
+      font:600 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+      color:var(--accent);text-align:right;white-space:nowrap
+    }
+        .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .proof{
       padding:24px;border-top:2px solid var(--ink);
       background:rgba(250,248,242,.45)
@@ -176,6 +189,7 @@
       .hero-card{transform:none}
       .section-head{grid-template-columns:1fr;gap:14px}
       .proof-grid{grid-template-columns:1fr 1fr}
+      .lab-grid{grid-template-columns:1fr}
       .process{grid-template-columns:1fr}
       .contact{grid-template-columns:1fr}
     }
@@ -231,7 +245,7 @@
       <section id="work">
         <div class="section-head">
           <div class="section-kicker">Selected work</div>
-          <h2>不是作品數量，<br>是每一個都能說清楚。</h2>
+          <h2>先看代表作，<br>再看工程細節。</h2>
         </div>
 
         <div class="work-grid">
@@ -241,12 +255,12 @@
               <h3>Campus One — Campus Agent OS</h3>
               <p>
                 把課程、校務、訊息、地圖、交通、學習風險與行動建議整合成跨端校園助手。
-                重點不在功能堆疊，而是把「今天該做什麼」做成可操作的流程。
+                重點不是功能數量，而是把「今天該做什麼」整理成可操作流程。
               </p>
             </div>
             <div class="tags">
               <span class="tag">Expo</span><span class="tag">Next.js</span>
-              <span class="tag">Firebase</span><span class="tag">Agent workflow</span>
+              <span class="tag">Firebase</span><span class="tag">Product system</span>
             </div>
           </a>
 
@@ -254,99 +268,91 @@
             <div>
               <span class="num">02 / DECISION SUPPORT</span>
               <h3>Retail Ops DSS</h3>
-              <p>日銷量預測、特徵重要性與補貨／人力規則建議。保留 baseline、時間切分與 MAE / MAPE，讓結果可驗證。</p>
+              <p>日銷量預測接到補貨與人力決策；保留時間切分、MA-7 baseline、MAE / MAPE 與可操作介面。</p>
             </div>
-            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">Streamlit</span></div>
+            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">Streamlit</span><span class="tag">Baseline</span></div>
           </a>
 
           <a class="work" href="https://github.com/Miiduoa/nowrite">
             <div>
               <span class="num">03 / DESKTOP PRODUCT</span>
               <h3>nowrite</h3>
-              <p>把文字轉手寫從腳本做成完整工具：多頁輸出、自訂字型、繁中介面，以及 macOS / Windows 桌面封裝。</p>
+              <p>把文字轉手寫從單次腳本做成完整桌面工具：多頁輸出、自訂字型、繁中介面，以及 macOS / Windows 封裝。</p>
             </div>
             <div class="tags"><span class="tag">Vue</span><span class="tag">FastAPI</span><span class="tag">Electron</span></div>
           </a>
 
+          <a class="work" href="https://github.com/Miiduoa/mymis">
+            <div>
+              <span class="num">04 / PRODUCT ANALYTICS</span>
+              <h3>Product Analytics Lab</h3>
+              <p>A/B test、SRM、funnel 與 event contract 放在同一條分析流程；先確認資料與分流可信，再解讀 lift。</p>
+            </div>
+            <div class="tags"><span class="tag">Experimentation</span><span class="tag">Funnel</span><span class="tag">Data contract</span></div>
+          </a>
+
           <a class="work" href="https://github.com/Miiduoa/competition-lab">
             <div>
-              <span class="num">04 / EXPERIMENTS</span>
+              <span class="num">05 / EXPERIMENTS</span>
               <h3>competition-lab</h3>
-              <p>把 Kaggle、DrivenData、AI CUP 與鐵道資料企劃的實驗、程式與提交紀錄集中管理，清楚區分本地驗證與官方結果。</p>
+              <p>整理 Kaggle、DrivenData、AI CUP 與鐵道資料企劃的程式與驗證紀錄，明確區分本地驗證與官方結果。</p>
             </div>
-            <div class="tags"><span class="tag">ML</span><span class="tag">Reproducibility</span><span class="tag">Evaluation</span></div>
+            <div class="tags"><span class="tag">ML</span><span class="tag">Evaluation</span><span class="tag">Reproducibility</span></div>
           </a>
 
           <a class="work" href="https://github.com/Miiduoa/demand-sensing-lite">
             <div>
-              <span class="num">05 / OPERATIONS</span>
+              <span class="num">06 / OPERATIONS</span>
               <h3>Demand Sensing Lite</h3>
               <p>多 SKU 需求預測接到 (s,S) 補貨模擬，比較服務水準、平均庫存與下單次數，讓模型誤差對營運的影響看得見。</p>
             </div>
             <div class="tags"><span class="tag">Forecasting</span><span class="tag">Inventory</span></div>
           </a>
+        </div>
+      </section>
 
-          <a class="work" href="https://github.com/Miiduoa/mymis">
-            <div>
-              <span class="num">06 / PRODUCT ANALYTICS</span>
-              <h3>mymis</h3>
-              <p>A/B test、SRM、funnel 與 event contract 放進同一個分析流程。先確認資料與分流可信，再解讀轉換率與 lift。</p>
-            </div>
-            <div class="tags"><span class="tag">Experimentation</span><span class="tag">Funnel</span><span class="tag">Data contract</span></div>
+      <section id="labs">
+        <div class="section-head">
+          <div class="section-kicker">Engineering labs</div>
+          <h2>小作品也要有<br>明確的工程問題。</h2>
+        </div>
+
+        <div class="lab-grid">
+          <a class="lab" href="https://github.com/Miiduoa/bitest">
+            <div><h3>BI Regression Checks</h3><p>Schema、row count、null rate、主鍵重複與 KPI 漂移檢查，失敗可直接擋 CI。</p></div>
+            <span class="lab-meta">DATA QA</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/bitest">
-            <div>
-              <span class="num">07 / DATA RELIABILITY</span>
-              <h3>bitest</h3>
-              <p>比較 baseline 與 current 資料的 schema、row count、null rate、主鍵重複與 KPI 漂移，失敗時可直接擋下 CI。</p>
-            </div>
-            <div class="tags"><span class="tag">Data quality</span><span class="tag">Regression checks</span><span class="tag">CI</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/stock">
+            <div><h3>Walk-forward Backtest Lab</h3><p>處理 look-ahead bias、交易成本、benchmark 與 walk-forward 驗證。</p></div>
+            <span class="lab-meta">BACKTESTING</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/stock">
-            <div>
-              <span class="num">08 / BACKTESTING</span>
-              <h3>Walk-forward Backtest Lab</h3>
-              <p>把 look-ahead bias、交易成本、benchmark 與 walk-forward 驗證當成回測核心，而不是只挑一條最好看的績效曲線。</p>
-            </div>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Walk-forward</span><span class="tag">Bias control</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/ERP">
+            <div><h3>Inventory Event Ledger</h3><p>用 append-only events 重建庫存，檢查重複事件、負庫存與資料一致性。</p></div>
+            <span class="lab-meta">EVENT LEDGER</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/puclass">
-            <div>
-              <span class="num">09 / SYSTEM LOGIC</span>
-              <h3>PUClass</h3>
-              <p>把課程衝堂、每週負荷與作業壓力寫成可測試的規則核心，先把 domain logic 做穩，再決定介面。</p>
-            </div>
-            <div class="tags"><span class="tag">Node.js</span><span class="tag">Testing</span><span class="tag">CLI</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/Gesture">
+            <div><h3>Motion Lab</h3><p>Android accelerometer → magnitude → RMS / peak → Steady / Moving / Shake。</p></div>
+            <span class="lab-meta">MOBILE SENSOR</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/ERP">
-            <div>
-              <span class="num">10 / INFORMATION SYSTEMS</span>
-              <h3>Inventory Event Ledger</h3>
-              <p>把收貨、出貨與調整記成 append-only events，再重建目前庫存；同時檢查重複事件、負庫存與資料一致性。</p>
-            </div>
-            <div class="tags"><span class="tag">Event ledger</span><span class="tag">Integrity</span><span class="tag">Python</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/line-bot">
+            <div><h3>Reliable LINE Webhook</h3><p>HMAC 驗證、event 去重、rate limit、routing 與 Reply API 邊界分離。</p></div>
+            <span class="lab-meta">BACKEND</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/Gesture">
-            <div>
-              <span class="num">11 / MOBILE SENSOR</span>
-              <h3>Motion Lab</h3>
-              <p>Android 加速度計資料經 magnitude、RMS 與 peak 轉成 Steady / Moving / Shake；感測器 UI 與純 Kotlin 分類規則分離測試。</p>
-            </div>
-            <div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">SensorManager</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/learnpy">
+            <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、迴圈、條件與禁止 API，不把結構分析假裝成語意驗證。</p></div>
+            <span class="lab-meta">STATIC ANALYSIS</span>
           </a>
-
-          <a class="work" href="https://github.com/Miiduoa/line-bot">
-            <div>
-              <span class="num">12 / BACKEND RELIABILITY</span>
-              <h3>Reliable LINE Webhook</h3>
-              <p>從簽章驗證、event 去重、rate limit 到 Reply API，把 webhook 的安全與可靠性問題拆成可測試元件，而不是只示範收到訊息就回覆。</p>
-            </div>
-            <div class="tags"><span class="tag">Flask</span><span class="tag">HMAC</span><span class="tag">Idempotency</span></div>
+          <a class="lab" href="https://github.com/Miiduoa/air">
+            <div><h3>IoT Sensor Network Monitor</h3><p>檢查座標、資料新鮮度、異常值與重複上報，再找最近可用站點。</p></div>
+            <span class="lab-meta">IOT / GEO</span>
+          </a>
+          <a class="lab" href="https://github.com/Miiduoa/puclass">
+            <div><h3>PUClass</h3><p>課程衝堂、每週負荷與作業壓力規則，核心 domain logic 可獨立測試。</p></div>
+            <span class="lab-meta">SYSTEM LOGIC</span>
+          </a>
+          <a class="lab" href="https://github.com/Miiduoa/rail-ops-briefing-dss">
+            <div><h3>Rail Ops Briefing DSS</h3><p>用營運 KPI、What-if 槓桿與規則建議整理鐵道營運簡報。</p></div>
+            <span class="lab-meta">DSS</span>
           </a>
         </div>
       </section>
