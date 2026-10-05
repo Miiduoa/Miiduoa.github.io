@@ -245,28 +245,40 @@
       <section id="work">
         <div class="section-head">
           <div class="section-kicker">Selected work</div>
-          <h2>先看代表作，<br>再看工程細節。</h2>
+          <h2>八個代表作，<br>先看完整能力。</h2>
         </div>
 
         <div class="work-grid">
           <a class="work featured" href="https://github.com/Miiduoa/graduation">
             <div>
               <span class="num">01 / PRODUCT SYSTEM</span>
-              <h3>Campus One — Campus Agent OS</h3>
-              <p>
-                把課程、校務、訊息、地圖、交通、學習風險與行動建議整合成跨端校園助手。
-                重點不是功能數量，而是把「今天該做什麼」整理成可操作流程。
-              </p>
+              <h3>Campus One</h3>
+              <p>把課程、訊息、地圖、交通、學習風險與行動建議整合成跨端校園助手；重點是讓學生知道「現在下一步要做什麼」。</p>
             </div>
-            <div class="tags">
-              <span class="tag">Expo</span><span class="tag">Next.js</span>
-              <span class="tag">Firebase</span><span class="tag">Product system</span>
+            <div class="tags"><span class="tag">Expo</span><span class="tag">Next.js</span><span class="tag">Firebase</span><span class="tag">Product system</span></div>
+          </a>
+
+          <a class="work" href="https://github.com/Miiduoa/web">
+            <div>
+              <span class="num">02 / RESILIENT SYSTEM</span>
+              <h3>Nolu</h3>
+              <p>把 auth、guest privacy、hot standby、signed replication、provider mesh 與 offline recovery 做成可驗證的 failure contracts。</p>
             </div>
+            <div class="tags"><span class="tag">PWA</span><span class="tag">Supabase</span><span class="tag">Replication</span><span class="tag">Resilience</span></div>
+          </a>
+
+          <a class="work" href="https://github.com/Miiduoa/tired">
+            <div>
+              <span class="num">03 / NATIVE IOS</span>
+              <h3>Tired</h3>
+              <p>SwiftUI + Firebase 的多身份任務系統；把排程規則抽成純 Swift PlanningCore，用測試驗證 priority、deadline、busy time 與每日容量。</p>
+            </div>
+            <div class="tags"><span class="tag">SwiftUI</span><span class="tag">Firebase</span><span class="tag">Swift Package</span><span class="tag">Testing</span></div>
           </a>
 
           <a class="work" href="https://github.com/Miiduoa/retail-ops-dss">
             <div>
-              <span class="num">02 / DECISION SUPPORT</span>
+              <span class="num">04 / DECISION SUPPORT</span>
               <h3>Retail Ops DSS</h3>
               <p>日銷量預測接到補貨與人力決策；保留時間切分、MA-7 baseline、MAE / MAPE 與可操作介面。</p>
             </div>
@@ -275,92 +287,38 @@
 
           <a class="work" href="https://github.com/Miiduoa/nowrite">
             <div>
-              <span class="num">03 / DESKTOP PRODUCT</span>
+              <span class="num">05 / DESKTOP PRODUCT</span>
               <h3>nowrite</h3>
               <p>把文字轉手寫從單次腳本做成完整桌面工具：多頁輸出、自訂字型、繁中介面，以及 macOS / Windows 封裝。</p>
             </div>
             <div class="tags"><span class="tag">Vue</span><span class="tag">FastAPI</span><span class="tag">Electron</span></div>
           </a>
 
-          <a class="work" href="https://github.com/Miiduoa/mymis">
-            <div>
-              <span class="num">04 / PRODUCT ANALYTICS</span>
-              <h3>Product Analytics Lab</h3>
-              <p>A/B test、SRM、funnel 與 event contract 放在同一條分析流程；先確認資料與分流可信，再解讀 lift。</p>
-            </div>
-            <div class="tags"><span class="tag">Experimentation</span><span class="tag">Funnel</span><span class="tag">Data contract</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/competition-lab">
-            <div>
-              <span class="num">05 / EXPERIMENTS</span>
-              <h3>competition-lab</h3>
-              <p>整理 Kaggle、DrivenData、AI CUP 與鐵道資料企劃的程式與驗證紀錄，明確區分本地驗證與官方結果。</p>
-            </div>
-            <div class="tags"><span class="tag">ML</span><span class="tag">Evaluation</span><span class="tag">Reproducibility</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/web">
-            <div>
-              <span class="num">06 / RESILIENT SYSTEM</span>
-              <h3>Nolu — Resilient Student Planner</h3>
-              <p>不只做課表與社交 PWA，而是把 auth、guest privacy、hot standby、signed replication、provider mesh 與 offline recovery 做成可驗證的 failure contracts。</p>
-            </div>
-            <div class="tags"><span class="tag">PWA</span><span class="tag">Supabase</span><span class="tag">Replication</span><span class="tag">Resilience</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/tired">
-            <div>
-              <span class="num">07 / NATIVE IOS</span>
-              <h3>Tired — Multi-role Task Planning</h3>
-              <p>SwiftUI + Firebase 的多身份任務系統；把排程規則另外抽成純 Swift PlanningCore，用測試驗證 priority、deadline、busy time、locked task 與每日容量。</p>
-            </div>
-            <div class="tags"><span class="tag">SwiftUI</span><span class="tag">Firebase</span><span class="tag">Swift Package</span><span class="tag">Testing</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/byline">
-            <div>
-              <span class="num">08 / DATA RELIABILITY</span>
-              <h3>Byline</h3>
-              <p>把 CSV 的欄位、型別、缺值率、row count 與檔案指紋存成 contract；資料更新時先判斷 breaking change，再讓 pipeline 往下跑。</p>
-            </div>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Data contract</span><span class="tag">CI</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/aortal">
-            <div>
-              <span class="num">09 / API RELIABILITY</span>
-              <h3>Aortal</h3>
-              <p>從真實 JSON sample 推導 API contract，遞迴檢查 required field、型別與 nullable；breaking change 直接用 exit code 擋在 CI。</p>
-            </div>
-            <div class="tags"><span class="tag">Node.js</span><span class="tag">API contract</span><span class="tag">Built-in tests</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/anyone">
-            <div>
-              <span class="num">10 / BACKEND RELIABILITY</span>
-              <h3>anyone — Anonymous Feedback Service</h3>
-              <p>匿名回饋不只要能送出：加入 Idempotency-Key、防濫刷、pending moderation、管理員邊界與 append-only audit trail，並刻意不把留言內容複製進 audit。</p>
-            </div>
-            <div class="tags"><span class="tag">Express</span><span class="tag">Idempotency</span><span class="tag">Moderation</span><span class="tag">Testing</span></div>
-          </a>
-
           <a class="work" href="https://github.com/Miiduoa/line-bot">
             <div>
-              <span class="num">11 / EVENT DELIVERY</span>
+              <span class="num">06 / EVENT DELIVERY</span>
               <h3>Reliable LINE Webhook</h3>
-              <p>把 webhook 接收與外部 Reply API 送出拆開：SQLite durable inbox/outbox、restart 後仍去重、lease、exponential backoff、dead-letter metadata 與獨立 worker。</p>
+              <p>SQLite durable inbox/outbox、restart 後仍去重、lease、exponential backoff、dead-letter metadata 與獨立 worker。</p>
             </div>
             <div class="tags"><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Outbox</span><span class="tag">Retry</span></div>
           </a>
 
           <a class="work" href="https://github.com/Miiduoa/air">
             <div>
-              <span class="num">12 / DATA PIPELINE</span>
+              <span class="num">07 / DATA PIPELINE</span>
               <h3>IoT Sensor Data Pipeline</h3>
-              <p>壞 row 不再拖垮整批 ingestion；逐筆 quarantine，量測 accepted ratio、healthy station ratio、latest lag，並保留最小化的錯誤證據。</p>
+              <p>壞 row 不拖垮整批 ingestion；逐筆 quarantine，量測 accepted ratio、healthy station ratio 與 latest lag。</p>
             </div>
             <div class="tags"><span class="tag">Python</span><span class="tag">Data quality</span><span class="tag">Quarantine</span><span class="tag">Observability</span></div>
+          </a>
+
+          <a class="work" href="https://github.com/Miiduoa/anyone">
+            <div>
+              <span class="num">08 / BACKEND RELIABILITY</span>
+              <h3>anyone</h3>
+              <p>匿名回饋服務加入 Idempotency-Key、rate limit、pending moderation、管理員邊界與 append-only audit trail。</p>
+            </div>
+            <div class="tags"><span class="tag">Express</span><span class="tag">Idempotency</span><span class="tag">Moderation</span><span class="tag">Testing</span></div>
           </a>
         </div>
       </section>
@@ -368,13 +326,25 @@
       <section id="labs">
         <div class="section-head">
           <div class="section-kicker">Engineering labs</div>
-          <h2>小作品也要有<br>明確的工程問題。</h2>
+          <h2>小作品不湊數，<br>每個都回答一個問題。</h2>
         </div>
 
         <div class="lab-grid">
+          <a class="lab" href="https://github.com/Miiduoa/competition-lab">
+            <div><h3>competition-lab</h3><p>Kaggle、DrivenData、AI CUP 與鐵道資料企劃的 baseline、驗證與提交紀錄。</p></div>
+            <span class="lab-meta">ML / EVALUATION</span>
+          </a>
+          <a class="lab" href="https://github.com/Miiduoa/mymis">
+            <div><h3>Product Analytics Lab</h3><p>A/B test、SRM、funnel 與 event contract；先確認資料可信，再解讀 lift。</p></div>
+            <span class="lab-meta">EXPERIMENTATION</span>
+          </a>
           <a class="lab" href="https://github.com/Miiduoa/byline">
-            <div><h3>Byline — CSV Contract Checker</h3><p>把 schema、推斷型別、null rate、unique count 與檔案指紋存成 manifest，更新時區分 breaking / warning 並用 exit code 擋 CI。</p></div>
+            <div><h3>Byline — CSV Contract Checker</h3><p>欄位、型別、缺值率、row count 與 SHA-256 contract，在 pipeline 前先抓 breaking change。</p></div>
             <span class="lab-meta">DATA CONTRACT</span>
+          </a>
+          <a class="lab" href="https://github.com/Miiduoa/aortal">
+            <div><h3>Aortal — API Contract Guard</h3><p>從 JSON sample 推導 contract，遞迴檢查 required field、型別、nullable 與 breaking change。</p></div>
+            <span class="lab-meta">API RELIABILITY</span>
           </a>
           <a class="lab" href="https://github.com/Miiduoa/stock">
             <div><h3>Walk-forward Backtest Lab</h3><p>處理 look-ahead bias、交易成本、benchmark 與 walk-forward 驗證。</p></div>
@@ -384,53 +354,29 @@
             <div><h3>Inventory Event Ledger</h3><p>用 append-only events 重建庫存，檢查重複事件、負庫存與資料一致性。</p></div>
             <span class="lab-meta">EVENT LEDGER</span>
           </a>
-          <a class="lab" href="https://github.com/Miiduoa/Gesture">
-            <div><h3>Motion Lab</h3><p>Android accelerometer → magnitude → RMS / peak → Steady / Moving / Shake。</p></div>
-            <span class="lab-meta">MOBILE SENSOR</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/learnpy">
-            <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、迴圈、條件與禁止 API，不把結構分析假裝成語意驗證。</p></div>
-            <span class="lab-meta">STATIC ANALYSIS</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/cs-textbook-site">
-            <div><h3>CS Notes Reader</h3><p>Offline-first 閱讀器：加權搜尋、Service Worker、localStorage 閱讀進度，加上 CI 內容完整性檢查。</p></div>
-            <span class="lab-meta">PWA / OFFLINE</span>
-          </a>
           <a class="lab" href="https://github.com/Miiduoa/n8n-render-deploy">
-            <div><h3>n8n / Render SLO Guard</h3><p>Synthetic probe、append-only history、availability / error budget / burn rate、p95 latency 與雙時間窗 severity。</p></div>
+            <div><h3>n8n / Render SLO Guard</h3><p>Synthetic probe、availability、error budget、burn rate、p95 latency 與雙時間窗 severity。</p></div>
             <span class="lab-meta">SLO / OBSERVABILITY</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/byline">
-            <div><h3>CSV Contract Checker</h3><p>把欄位、型別、缺值率與檔案指紋存成 contract，在 CI 前先抓 schema drift 與 breaking change。</p></div>
-            <span class="lab-meta">DATA CONTRACT</span>
           </a>
           <a class="lab" href="https://github.com/Miiduoa/0925SQL">
             <div><h3>SQL Analytics Mart</h3><p>SQLite schema、foreign key、index、window function、分析查詢與可重建測試資料。</p></div>
             <span class="lab-meta">SQL / DATA MODEL</span>
           </a>
           <a class="lab" href="https://github.com/Miiduoa/math">
-            <div><h3>Double-entry Finance Ledger</h3><p>使用 integer minor units 與借貸平衡規則，產生 account balances、trial balance 與月度損益。</p></div>
+            <div><h3>Double-entry Finance Ledger</h3><p>integer minor units、借貸平衡、duplicate transaction guard、trial balance 與月度損益。</p></div>
             <span class="lab-meta">FINANCE SYSTEM</span>
           </a>
-          <a class="lab" href="https://github.com/Miiduoa/llm">
-            <div><h3>LLM Fine-tuning Pipeline Lab</h3><p>LoRA training、JSONL data contract、infer/eval 設定與 tracking；用輕量 CI 驗證 pipeline 設定，不把 reference config 當成訓練成果。</p></div>
-            <span class="lab-meta">LLM / MLOPS</span>
+          <a class="lab" href="https://github.com/Miiduoa/Gesture">
+            <div><h3>Motion Lab</h3><p>Android accelerometer → magnitude → RMS / peak → Steady / Moving / Shake。</p></div>
+            <span class="lab-meta">MOBILE SENSOR</span>
           </a>
-          <a class="lab" href="https://github.com/Miiduoa/tired">
-            <div><h3>iOS Planning Core</h3><p>把多身份任務 App 的排程需求抽成純 Swift Package，測 priority、deadline、busy blocks、locked tasks 與每日容量。</p></div>
-            <span class="lab-meta">SWIFT / IOS</span>
+          <a class="lab" href="https://github.com/Miiduoa/learnpy">
+            <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、控制流程與禁止 API，保留 deterministic feedback。</p></div>
+            <span class="lab-meta">STATIC ANALYSIS</span>
           </a>
-          <a class="lab" href="https://github.com/Miiduoa/anyone">
-            <div><h3>Anonymous Feedback Security Lab</h3><p>匿名留言預設待審，加入 idempotency、moderation audit、rate limit、CORS allowlist 與管理 session 邊界。</p></div>
-            <span class="lab-meta">PRIVACY / SECURITY</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/demand-sensing-lite">
-            <div><h3>Demand Sensing Lite</h3><p>多 SKU 預測接到 (s,S) 補貨模擬，觀察模型誤差如何影響服務水準與平均庫存。</p></div>
-            <span class="lab-meta">FORECAST / INVENTORY</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/n8n-render-deploy">
-            <div><h3>SLO Guard</h3><p>Synthetic probe 接 availability、latency、error budget 與 multi-window burn rate，判斷服務可靠性。</p></div>
-            <span class="lab-meta">SRE / RELIABILITY</span>
+          <a class="lab" href="https://github.com/Miiduoa/cs-textbook-site">
+            <div><h3>CS Notes Reader</h3><p>Offline-first 閱讀器：加權搜尋、Service Worker、localStorage 進度與內容完整性檢查。</p></div>
+            <span class="lab-meta">PWA / OFFLINE</span>
           </a>
         </div>
       </section>
