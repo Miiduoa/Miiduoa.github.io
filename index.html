@@ -344,6 +344,24 @@
             </div>
             <div class="tags"><span class="tag">Express</span><span class="tag">Idempotency</span><span class="tag">Moderation</span><span class="tag">Testing</span></div>
           </a>
+
+          <a class="work" href="https://github.com/Miiduoa/line-bot">
+            <div>
+              <span class="num">11 / EVENT DELIVERY</span>
+              <h3>Reliable LINE Webhook</h3>
+              <p>把 webhook 接收與外部 Reply API 送出拆開：SQLite durable inbox/outbox、restart 後仍去重、lease、exponential backoff、dead-letter metadata 與獨立 worker。</p>
+            </div>
+            <div class="tags"><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Outbox</span><span class="tag">Retry</span></div>
+          </a>
+
+          <a class="work" href="https://github.com/Miiduoa/air">
+            <div>
+              <span class="num">12 / DATA PIPELINE</span>
+              <h3>IoT Sensor Data Pipeline</h3>
+              <p>壞 row 不再拖垮整批 ingestion；逐筆 quarantine，量測 accepted ratio、healthy station ratio、latest lag，並保留最小化的錯誤證據。</p>
+            </div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Data quality</span><span class="tag">Quarantine</span><span class="tag">Observability</span></div>
+          </a>
         </div>
       </section>
 
@@ -370,10 +388,6 @@
             <div><h3>Motion Lab</h3><p>Android accelerometer → magnitude → RMS / peak → Steady / Moving / Shake。</p></div>
             <span class="lab-meta">MOBILE SENSOR</span>
           </a>
-          <a class="lab" href="https://github.com/Miiduoa/line-bot">
-            <div><h3>Reliable LINE Webhook</h3><p>HMAC 驗證、event 去重、rate limit、routing 與 Reply API 邊界分離。</p></div>
-            <span class="lab-meta">BACKEND</span>
-          </a>
           <a class="lab" href="https://github.com/Miiduoa/learnpy">
             <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、迴圈、條件與禁止 API，不把結構分析假裝成語意驗證。</p></div>
             <span class="lab-meta">STATIC ANALYSIS</span>
@@ -381,10 +395,6 @@
           <a class="lab" href="https://github.com/Miiduoa/cs-textbook-site">
             <div><h3>CS Notes Reader</h3><p>Offline-first 閱讀器：加權搜尋、Service Worker、localStorage 閱讀進度，加上 CI 內容完整性檢查。</p></div>
             <span class="lab-meta">PWA / OFFLINE</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/air">
-            <div><h3>IoT Sensor Network Monitor</h3><p>檢查座標、資料新鮮度、異常值與重複上報，再找最近可用站點。</p></div>
-            <span class="lab-meta">IOT / GEO</span>
           </a>
           <a class="lab" href="https://github.com/Miiduoa/puclass">
             <div><h3>PUClass</h3><p>課程衝堂、每週負荷與作業壓力規則，核心 domain logic 可獨立測試。</p></div>
