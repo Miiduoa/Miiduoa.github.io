@@ -393,6 +393,18 @@
             <div><h3>Policy Gate</h3><p>RBAC + attribute conditions、deny-overrides 與可解釋的 authorization decision；規則順序與預設拒絕皆可測。</p></div>
             <span class="lab-meta">AUTHZ / SECURITY</span>
           </a>
+          <a class="lab" href="/labs/tracepath/">
+            <div><h3>Tracepath</h3><p>檢查 span parent/child 結構、exclusive time、重疊 child spans 與 boundary anomaly，避免把 waterfall 畫出來就當成 tracing 分析。</p></div>
+            <span class="lab-meta">TRACING / OBSERVABILITY</span>
+          </a>
+          <a class="lab" href="/labs/flagrail/">
+            <div><h3>Flagrail</h3><p>ordered targeting rules、stable rollout bucket、kill switch 與 decision reason；同一個 subject 的 rollout 結果可重現。</p></div>
+            <span class="lab-meta">CONFIG / FEATURE FLAGS</span>
+          </a>
+          <a class="lab" href="/labs/lineageguard/">
+            <div><h3>LineageGuard</h3><p>從 schema diff 往下追 column-level lineage，標出 breaking change 對 mart、export 與 dashboard 的實際 blast radius。</p></div>
+            <span class="lab-meta">DATA LINEAGE / CONTRACT</span>
+          </a>
           <a class="lab" href="/labs/txnscope/">
             <div><h3>TxnScope</h3><p>用 snapshot version 與 compare-on-commit 重現 lost update；兩個正確的操作若同時發生，也必須能顯式偵測 stale write。</p></div>
             <span class="lab-meta">DB / CONCURRENCY</span>
