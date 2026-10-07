@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Progressive delivery guardrail calculator for canary releases.">
+<title>Rampwatch — Canary release guardrails</title>
+<style>
+:root{--bg:#11120f;--panel:#191a17;--line:#30312c;--ink:#f2f0e8;--muted:#a8a59a;--green:#8cc8a5;--amber:#e0bc72;--red:#e18c80}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#1d382d 0,transparent 30rem),var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif}.shell{width:min(1100px,calc(100% - 32px));margin:auto}header{padding:58px 0 32px;border-bottom:1px solid var(--line)}.eyebrow{font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--green)}h1{font-size:clamp(42px,7vw,76px);line-height:.96;letter-spacing:-.055em;max-width:820px;margin:16px 0}header p{max-width:720px;color:var(--muted);font-size:17px}.presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}button{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#171814;color:var(--ink);cursor:pointer}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}.card{border:1px solid var(--line);border-radius:18px;background:rgba(25,26,23,.88);padding:20px}.card h2{font-size:14px;margin:0 0 16px;color:var(--muted);font-weight:650}.inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}label{display:grid;gap:7px;color:var(--muted);font-size:12px}input{width:100%;background:#11120f;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px;font:inherit}.decision{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.decision strong{font-size:42px;letter-spacing:-.04em}.decision strong[data-state=advance]{color:var(--green)}.decision strong[data-state=hold]{color:var(--amber)}.decision strong[data-state=rollback]{color:var(--red)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.metric{padding:15px;border:1px solid var(--line);border-radius:14px}.metric span{display:block;font-size:11px;color:var(--muted)}.metric strong{display:block;font-size:20px;margin-top:3px}.ci{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;color:var(--muted);font-size:12px}.ci div{border-top:1px solid var(--line);padding-top:10px}.ci strong{color:var(--ink);font-weight:600}.reason{margin:14px 0 0;padding-left:18px;color:var(--muted)}.reason li{margin:6px 0}.foot{font-size:13px;color:var(--muted);padding:5px 0 50px}.foot a{color:inherit}.error{color:var(--red);min-height:20px}@media(max-width:760px){.grid{grid-template-columns:1fr}.inputs,.metrics{grid-template-columns:1fr 1fr}.decision{align-items:flex-start;flex-direction:column}}@media(max-width:480px){.inputs,.metrics,.ci{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+  <div class="eyebrow">PROGRESSIVE DELIVERY LAB</div>
+  <h1>Can this canary take more traffic?</h1>
+  <p>Rampwatch turns a few operational signals into an explicit release decision. It uses fixed guardrails and Wilson intervals so a "looks fine" dashboard does not quietly become the release policy.</p>
+  <div class="presets">
+    <button data-preset="healthy">Healthy</button>
+    <button data-preset="latency">Latency regression</button>
+    <button data-preset="errors">Error regression</button>
+    <button data-preset="small">Too little data</button>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="card"><h2>Baseline</h2><div class="inputs">
+    <label>Requests<input id="baselineRequests" type="number" min="1" value="10000"></label>
+    <label>Errors<input id="baselineErrors" type="number" min="0" value="100"></label>
+    <label>p95 latency, ms<input id="baselineP95" type="number" min="1" value="220"></label>
+  </div></section>
+
+  <section class="card"><h2>Canary</h2><div class="inputs">
+    <label>Requests<input id="canaryRequests" type="number" min="1" value="2500"></label>
+    <label>Errors<input id="canaryErrors" type="number" min="0" value="23"></label>
+    <label>p95 latency, ms<input id="canaryP95" type="number" min="1" value="228"></label>
+  </div></section>
+
+  <section class="card"><h2>Ramp stage</h2>
+    <label>Current traffic %<input id="traffic" type="number" min="1" max="100" value="10"></label>
+    <p class="error" id="error"></p>
+  </section>
+
+  <section class="card"><h2>Decision</h2>
+    <div class="decision">
+      <strong id="decision" data-state="advance">ADVANCE</strong>
+      <div><span style="color:var(--muted);font-size:11px">NEXT STEP</span><div id="next" style="font-size:20px;font-weight:700">25% traffic</div></div>
+    </div>
+  </section>
+</main>
+
+<section class="metrics">
+  <div class="metric"><span>Baseline error</span><strong id="baselineRate">—</strong></div>
+  <div class="metric"><span>Canary error</span><strong id="canaryRate">—</strong></div>
+  <div class="metric"><span>Error delta</span><strong id="delta">—</strong></div>
+  <div class="metric"><span>Latency ratio</span><strong id="latency">—</strong></div>
+</section>
+
+<section class="card" style="margin:10px 0 18px">
+  <h2>95% Wilson intervals</h2>
+  <div class="ci">
+    <div>Baseline <strong id="bci">—</strong></div>
+    <div>Canary <strong id="cci">—</strong></div>
+  </div>
+  <ul class="reason" id="reasons"></ul>
+</section>
+
+<p class="foot">Policy: rollback at ≥30% p95 regression, or a ≥0.5 pp error increase with separated 95% intervals; hold small cohorts and moderate regressions. These thresholds are demo policy, not universal SRE guidance. <a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/labs/rampwatch">Source and tests ↗</a></p>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
