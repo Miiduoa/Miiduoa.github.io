@@ -1,490 +1,76 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f3f0e8" />
-  <meta name="description" content="顧晉瑋｜資訊管理、產品分析、決策支援、資料品質與應用機器學習作品集。" />
-  <title>顧晉瑋｜Portfolio</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e8">
+  <meta name="description" content="顧晉瑋的軟體作品集。圖片處理、字幕編輯、開發工具與資料分析；可操作的作品、原始碼與執行說明。">
+  <title>顧晉瑋 — 作品集</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
-    :root{
-      --paper:#f3f0e8;
-      --ink:#151515;
-      --muted:#69665e;
-      --line:#d8d3c8;
-      --panel:#faf8f2;
-      --accent:#174d3d;
-      --accent-soft:#dde8e2;
-      --shadow:0 20px 60px rgba(31,28,21,.08);
-      --radius:22px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:
-        radial-gradient(circle at 85% -10%, rgba(23,77,61,.11), transparent 30rem),
-        var(--paper);
-      color:var(--ink);
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
-      line-height:1.65;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:inherit}
-    .shell{width:min(1160px,calc(100% - 40px));margin:0 auto}
-    nav{
-      height:76px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid rgba(21,21,21,.09);
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-      text-decoration:none;font-weight:700;letter-spacing:-.02em;
-    }
-    .mark{
-      width:34px;height:34px;border:1px solid var(--ink);
-      border-radius:50%;display:grid;place-items:center;font-size:12px;
-      font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-    }
-    nav .links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
-    nav .links a{text-decoration:none}
-    nav .links a:hover{color:var(--ink)}
-    .hero{
-      min-height:620px;
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      align-items:center;
-      gap:64px;
-      padding:78px 0 86px;
-    }
-    .eyebrow{
-      display:flex;align-items:center;gap:10px;
-      font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;
-      letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
-    }
-    .eyebrow:before{content:"";width:32px;height:1px;background:var(--accent)}
-    h1{
-      margin:22px 0 24px;
-      font-size:clamp(48px,7vw,86px);
-      line-height:.98;
-      letter-spacing:-.065em;
-      max-width:820px;
-    }
-    .hero-copy{
-      max-width:620px;
-      color:var(--muted);
-      font-size:18px;
-      margin:0 0 32px;
-    }
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{
-      min-height:46px;padding:0 18px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      text-decoration:none;font-size:14px;font-weight:650;
-      border:1px solid var(--ink);
-      transition:.2s ease;
-    }
-    .btn.primary{background:var(--ink);color:white}
-    .btn:hover{transform:translateY(-2px)}
-    .hero-card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:32px;
-      padding:28px;
-      box-shadow:var(--shadow);
-      transform:rotate(1.1deg);
-    }
-    .hero-card img{
-      width:100%;display:block;border-radius:17px;
-      border:1px solid #dedad0;background:white;
-    }
-    .hero-card .caption{
-      display:flex;justify-content:space-between;gap:20px;
-      margin-top:18px;font-size:13px;color:var(--muted)
-    }
-    .hero-card .caption strong{color:var(--ink);font-weight:650}
-    section{padding:96px 0;border-top:1px solid var(--line)}
-    .section-head{
-      display:grid;grid-template-columns:.75fr 1.25fr;
-      gap:40px;margin-bottom:46px;
-    }
-    .section-kicker{
-      font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;
-      text-transform:uppercase;letter-spacing:.12em;color:var(--accent);
-    }
-    h2{
-      margin:0;font-size:clamp(31px,4vw,52px);
-      line-height:1.05;letter-spacing:-.045em;
-    }
-    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .work{
-      min-height:300px;background:rgba(250,248,242,.72);
-      border:1px solid var(--line);border-radius:var(--radius);
-      padding:28px;display:flex;flex-direction:column;justify-content:space-between;
-      text-decoration:none;transition:.22s ease;
-    }
-    .work:hover{transform:translateY(-4px);box-shadow:var(--shadow);background:var(--panel)}
-    .work.featured{grid-column:span 2;min-height:360px}
-    .work .num{
-      font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-      color:var(--muted)
-    }
-    .work h3{
-      font-size:30px;line-height:1.08;letter-spacing:-.035em;margin:20px 0 12px
-    }
-    .work p{color:var(--muted);max-width:680px;margin:0}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-    .tag{
-      border:1px solid var(--line);border-radius:999px;padding:5px 10px;
-      font-size:12px;color:#55524b;background:#f6f3ec
-    }
-    .lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .lab{
-      display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;
-      padding:20px 0;border-top:1px solid var(--line);text-decoration:none;
-      transition:.18s ease
-    }
-    .lab:hover{padding-left:8px}
-    .lab h3{margin:0 0 6px;font-size:18px;letter-spacing:-.02em}
-    .lab p{margin:0;color:var(--muted);font-size:13px;max-width:520px}
-    .lab .lab-meta{
-      font:600 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
-      color:var(--accent);text-align:right;white-space:nowrap
-    }
-        .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .proof{
-      padding:24px;border-top:2px solid var(--ink);
-      background:rgba(250,248,242,.45)
-    }
-    .proof strong{
-      display:block;font-size:28px;letter-spacing:-.035em;margin-bottom:6px
-    }
-    .proof span{font-size:13px;color:var(--muted)}
-    .process{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-      counter-reset:step;
-    }
-    .process article{counter-increment:step}
-    .process article:before{
-      content:"0" counter(step);
-      font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-      color:var(--accent)
-    }
-    .process h3{font-size:20px;margin:18px 0 8px;letter-spacing:-.02em}
-    .process p{margin:0;color:var(--muted);font-size:14px}
-    .contact{
-      display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end
-    }
-    .contact p{font-size:18px;color:var(--muted);max-width:680px;margin:18px 0 0}
-    footer{
-      padding:28px 0 42px;border-top:1px solid var(--line);
-      display:flex;justify-content:space-between;gap:20px;
-      color:var(--muted);font-size:12px
-    }
-    @media (max-width:850px){
-      .hero{grid-template-columns:1fr;gap:38px;padding-top:58px}
-      .hero-card{transform:none}
-      .section-head{grid-template-columns:1fr;gap:14px}
-      .proof-grid{grid-template-columns:1fr 1fr}
-      .lab-grid{grid-template-columns:1fr}
-      .process{grid-template-columns:1fr}
-      .contact{grid-template-columns:1fr}
-    }
-    @media (max-width:620px){
-      .shell{width:min(100% - 28px,1160px)}
-      nav .links a:nth-child(2){display:none}
-      .hero{min-height:0;padding:50px 0 66px}
-      h1{font-size:51px}
-      .hero-copy{font-size:16px}
-      section{padding:72px 0}
-      .work-grid{grid-template-columns:1fr}
-      .work.featured{grid-column:auto}
-      .proof-grid{grid-template-columns:1fr}
-      footer{flex-direction:column}
-    }
+    :root{color-scheme:light;--paper:#f3f0e8;--ink:#20251f;--muted:#64685f;--line:#d6d8cc;--accent:#225242}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-underline-offset:5px}a:hover{color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:6px}::selection{background:#cadbc9}.shell{max-width:1180px;margin:auto;padding:0 36px}.skip{position:absolute;left:20px;top:-80px;background:var(--ink);color:white;padding:12px}.skip:focus{top:10px;z-index:9}
+    nav{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;display:flex;align-items:center;gap:13px;font-weight:650}.mark{width:31px;height:31px;border:1px solid var(--ink);display:grid;place-items:center;font:12px ui-monospace,monospace}.nav-links{display:flex;gap:28px;font-size:14px}.nav-links a{text-decoration:none}
+    .intro{padding:82px 0 76px;display:grid;grid-template-columns:1.3fr 1fr;align-items:end;gap:65px}.eyebrow{font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.13em;color:var(--accent);text-transform:uppercase}h1{font-size:clamp(44px,6vw,76px);font-weight:600;letter-spacing:-.06em;line-height:1.13;margin:24px 0 0}.intro p{margin:0 0 15px;color:var(--muted);max-width:440px;font-size:17px}.intro .intro-link{font-size:14px;display:inline-block;margin-top:10px}.section-head{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--ink);padding-top:20px;margin-bottom:28px;gap:20px}h2{font-weight:550;font-size:20px;letter-spacing:-.02em;margin:0}.section-head span{font:11px ui-monospace,monospace;color:var(--muted);letter-spacing:.05em}.featured{display:grid;grid-template-columns:1fr 1fr;gap:28px}.project{min-width:0}.preview{display:block;background:#e2e2d7;aspect-ratio:1.6;overflow:hidden;border:1px solid var(--line)}.preview img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .3s}.preview:hover img{transform:scale(1.018)}.project-head{display:flex;justify-content:space-between;align-items:baseline;margin:21px 0 5px;gap:14px}.project-head h3{font-size:27px;font-weight:550;letter-spacing:-.04em;margin:0}.project-head span{font:10px ui-monospace,monospace;color:var(--muted);letter-spacing:.05em}.project p{margin:8px 0;color:var(--muted);font-size:15px;max-width:480px}.project .detail{font-size:12px;margin-top:14px;color:#6c6e65}.project-links{display:flex;gap:24px;font-size:14px;margin:17px 0 0}.project-links a{font-weight:500}.project-links .primary{color:var(--accent)}
+    .selected-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:44px;margin:55px 0 76px}.selected{padding:25px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:20px}.selected h3{font-size:18px;letter-spacing:-.02em;font-weight:600;margin:0 0 8px}.selected p{margin:0;font-size:14px;color:var(--muted);max-width:400px}.selected .project-links{font-size:13px;gap:18px;margin-top:12px}.selected .index{font:11px ui-monospace,monospace;color:var(--muted);padding-top:4px}.other-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin:0 0 72px}.other{display:flex;justify-content:space-between;text-decoration:none;padding:19px 0;border-bottom:1px solid var(--line);gap:24px}.other strong{display:block;font-size:15px;font-weight:550}.other small{display:block;font-size:12px;color:var(--muted);margin-top:4px}.about{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:68px}.about p{color:var(--muted);font-size:15px;margin:0;max-width:470px}.about a{font-size:14px}footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:24px 0 36px;color:var(--muted);font:12px/1.7 ui-monospace,monospace;gap:20px}.footer-links{display:flex;gap:20px}
+    @media(max-width:760px){.shell{padding:0 22px}nav{height:76px}.nav-links{gap:18px}.intro{padding:48px 0;grid-template-columns:1fr;gap:25px}.intro p{font-size:15px}.featured{grid-template-columns:1fr;gap:40px}.selected-grid{grid-template-columns:1fr;margin-top:42px;margin-bottom:52px}.other-grid{grid-template-columns:1fr;margin-bottom:52px}.about{grid-template-columns:1fr;gap:22px;margin-bottom:45px}.section-head span{font-size:10px}.project-head h3{font-size:25px}footer{flex-wrap:wrap}.project p{max-width:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.preview img{transition:none}}
+  details{border-bottom:1px solid var(--line);margin:-35px 0 65px;padding:15px 0}summary{cursor:pointer;color:var(--muted);font-size:14px}.studies{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:24px 0 10px}.studies a{font-size:13px}.studies small{display:block;color:var(--muted);font-size:11px;margin-top:4px}@media(max-width:760px){.studies{grid-template-columns:1fr 1fr}}
   </style>
 </head>
 <body>
-  <div class="shell">
-    <nav>
-      <a class="brand" href="#top"><span class="mark">JW</span><span>顧晉瑋</span></a>
-      <div class="links">
-        <a href="#work">作品</a>
-        <a href="#approach">方法</a>
-        <a href="https://github.com/Miiduoa">GitHub ↗</a>
+<a class="skip" href="#work">跳到作品</a>
+<div class="shell">
+  <nav aria-label="主要導覽">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">JW</span>顧晉瑋</a>
+    <div class="nav-links"><a href="#work">作品</a><a href="#about">關於</a><a href="https://github.com/Miiduoa">GitHub ↗</a></div>
+  </nav>
+  <main id="top">
+    <header class="intro">
+      <div><div class="eyebrow">Miiduoa / Software portfolio</div><h1>顧晉瑋。<br>作品與實驗。</h1></div>
+      <div><p>靜宜大學資訊管理學系。<br>以 Web 工具、資料分析與系統開發為主。</p><p>下面的作品可以直接操作，或從原始碼在本機執行。每個專案都保留使用方式、測試與限制。</p><a class="intro-link" href="mailto:demohan513@gmail.com">demohan513@gmail.com ↗</a></div>
+    </header>
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head"><h2 id="work-title">精選作品</h2><span>SELECTED WORK / 01—06</span></div>
+      <div class="featured">
+        <article class="project">
+          <a class="preview" href="/stillroom/" aria-label="開啟 Stillroom 圖片工作台"><img src="/assets/stillroom.jpg" alt="Stillroom 的圖片預覽、匯出設定與批次清單" width="1440" height="900" fetchpriority="high"></a>
+          <div class="project-head"><h3>Stillroom</h3><span>IMAGE WORKBENCH</span></div>
+          <p>把一批圖片整理成可交付的檔案。調整尺寸、裁切與格式，檢查輸出大小，再一次打包下載。</p>
+          <p class="detail">TypeScript / Canvas / ZIP · 圖片在瀏覽器處理</p>
+          <div class="project-links"><a class="primary" href="/stillroom/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/stillroom">原始碼</a></div>
+        </article>
+        <article class="project">
+          <a class="preview" href="/cuework/" aria-label="開啟 Cuework 字幕工作台"><img src="/assets/cuework.jpg" alt="Cuework 的字幕清單、時間軸與編輯面板" width="1440" height="900" fetchpriority="high"></a>
+          <div class="project-head"><h3>Cuework</h3><span>SUBTITLE EDITOR</span></div>
+          <p>修正字幕的文字與時間。找出重疊、調整整段時間偏移，完成後匯出 SRT 或 WebVTT。</p>
+          <p class="detail">TypeScript / Node.js / SQLite · 線上版採瀏覽器儲存</p>
+          <div class="project-links"><a class="primary" href="/cuework/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/cuework">原始碼與本機版</a></div>
+        </article>
       </div>
-    </nav>
-
-    <main id="top">
-      <header class="hero">
-        <div>
-          <div class="eyebrow">Information Management · Taiwan</div>
-          <h1>把資料分析<br>做成能用的系統。</h1>
-          <p class="hero-copy">
-            我是顧晉瑋，靜宜大學資訊管理學系。作品集中在產品分析、決策支援、資料品質、行動感測、應用機器學習、原生 iOS 與跨端產品開發。
-            我習慣先把問題與驗證方式講清楚，再決定模型與介面。
-          </p>
-          <div class="cta-row">
-            <a class="btn primary" href="#work">看精選作品</a>
-            <a class="btn" href="https://github.com/Miiduoa">GitHub</a>
-            <a class="btn" href="mailto:demohan513@gmail.com">Email</a>
-          </div>
-        </div>
-        <aside class="hero-card">
-          <img src="https://raw.githubusercontent.com/Miiduoa/retail-ops-dss/main/docs/screenshots/01_forecast.png" alt="Retail Ops DSS 預測與決策介面" />
-          <div class="caption">
-            <span><strong>Retail Ops DSS</strong><br>預測不是終點，下一步才是。</span>
-            <span>Python · Streamlit</span>
-          </div>
-        </aside>
-      </header>
-
-      <section id="work">
-        <div class="section-head">
-          <div class="section-kicker">Selected work</div>
-          <h2>八個主力作品，<br>先看完整能力。</h2>
-        </div>
-
-        <div class="work-grid">
-          <a class="work featured" href="https://github.com/Miiduoa/graduation">
-            <div>
-              <span class="num">01 / PRODUCT SYSTEM</span>
-              <h3>Campus One</h3>
-              <p>把課程、訊息、地圖、交通、學習風險與行動建議整合成跨端校園助手；重點是讓學生知道「現在下一步要做什麼」。</p>
-            </div>
-            <div class="tags"><span class="tag">Expo</span><span class="tag">Next.js</span><span class="tag">Firebase</span><span class="tag">Product system</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/web">
-            <div>
-              <span class="num">02 / RESILIENT SYSTEM</span>
-              <h3>Nolu</h3>
-              <p>把 auth、guest privacy、hot standby、signed replication、provider mesh 與 offline recovery 做成可驗證的 failure contracts。</p>
-            </div>
-            <div class="tags"><span class="tag">PWA</span><span class="tag">Supabase</span><span class="tag">Replication</span><span class="tag">Resilience</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/byline">
-            <div>
-              <span class="num">03 / DATA RELIABILITY</span>
-              <h3>Byline</h3>
-              <p>把 CSV 的欄位、型別、缺值率、row count 與檔案指紋存成 dataset contract；breaking change 可直接在 CI 前被擋下。</p>
-            </div>
-            <div class="tags"><span class="tag">Python</span><span class="tag">Data contract</span><span class="tag">CI</span><span class="tag">Reproducibility</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/retail-ops-dss">
-            <div>
-              <span class="num">04 / DECISION SUPPORT</span>
-              <h3>Retail Ops DSS</h3>
-              <p>日銷量預測接到補貨與人力決策；保留時間切分、MA-7 baseline、MAE / MAPE 與可操作介面。</p>
-            </div>
-            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">Streamlit</span><span class="tag">Baseline</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/nowrite">
-            <div>
-              <span class="num">05 / DESKTOP PRODUCT</span>
-              <h3>nowrite</h3>
-              <p>把文字轉手寫從單次腳本做成完整桌面工具：多頁輸出、自訂字型、繁中介面，以及 macOS / Windows 封裝。</p>
-            </div>
-            <div class="tags"><span class="tag">Vue</span><span class="tag">FastAPI</span><span class="tag">Electron</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/line-bot">
-            <div>
-              <span class="num">06 / EVENT DELIVERY</span>
-              <h3>Reliable LINE Webhook</h3>
-              <p>SQLite durable inbox/outbox、restart 後仍去重、lease、exponential backoff、dead-letter metadata 與獨立 worker。</p>
-            </div>
-            <div class="tags"><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Outbox</span><span class="tag">Retry</span></div>
-          </a>
-          <a class="work" href="https://github.com/Miiduoa/tracefold">
-            <div>
-              <span class="num">07 / NETWORK ANALYSIS</span>
-              <h3>Tracefold</h3>
-              <p>在瀏覽器本機分析 HAR：請求時間軸、失敗篩選、p95 與尖峰併發。附實際網站紀錄、28 項測試及一萬筆壓力測試；每頁 200 列，完整資料仍可搜尋。</p>
-            </div>
-            <div class="tags"><span class="tag">TypeScript</span><span class="tag">HAR</span><span class="tag">Privacy</span></div>
-          </a>
-
-          <a class="work" href="https://github.com/Miiduoa/patchday">
-            <div>
-              <span class="num">08 / DATABASE TOOLING</span>
-              <h3>Patchday</h3>
-              <p>在 SQLite snapshot 預演 migration，檢查 schema、外鍵與資料筆數變化。欄位／筆數減少警示、31 項測試，並以 Chinook 公開樣本驗證五種情境。</p>
-            </div>
-            <div class="tags"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Transactions</span></div>
-          </a>
-        </div>
-      </section>
-
-      <section id="labs">
-        <div class="section-head">
-          <div class="section-kicker">Engineering labs</div>
-          <h2>小作品不湊數，<br>每個都回答一個問題。</h2>
-        </div>
-
-        <div class="lab-grid">
-          <a class="lab" href="https://github.com/Miiduoa/competition-lab">
-            <div><h3>competition-lab</h3><p>Kaggle、DrivenData、AI CUP 與鐵道資料企劃的 baseline、驗證與提交紀錄。</p></div>
-            <span class="lab-meta">ML / EVALUATION</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/mymis">
-            <div><h3>Product Analytics Lab</h3><p>A/B test、SRM、funnel 與 event contract；先確認資料可信，再解讀 lift。</p></div>
-            <span class="lab-meta">EXPERIMENTATION</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/aortal">
-            <div><h3>Aortal — API Contract Guard</h3><p>從 JSON sample 推導 contract，遞迴檢查 required field、型別、nullable 與 breaking change。</p></div>
-            <span class="lab-meta">API RELIABILITY</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/stock">
-            <div><h3>Walk-forward Backtest Lab</h3><p>處理 look-ahead bias、交易成本、benchmark 與 walk-forward 驗證。</p></div>
-            <span class="lab-meta">BACKTESTING</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/ERP">
-            <div><h3>Inventory Event Ledger</h3><p>用 append-only events 重建庫存，檢查重複事件、負庫存與資料一致性。</p></div>
-            <span class="lab-meta">EVENT LEDGER</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/bitest">
-            <div><h3>BI Regression Checks</h3><p>比較 baseline / current CSV 的 schema、row count、null rate、duplicate key 與 metric drift，資料退化直接擋在 CI。</p></div>
-            <span class="lab-meta">DATA QUALITY / CI</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/0925SQL">
-            <div><h3>SQL Analytics Mart</h3><p>SQLite schema、foreign key、index、window function、分析查詢與可重建測試資料。</p></div>
-            <span class="lab-meta">SQL / DATA MODEL</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/math">
-            <div><h3>Double-entry Finance Ledger</h3><p>integer minor units、借貸平衡、duplicate transaction guard、trial balance 與月度損益。</p></div>
-            <span class="lab-meta">FINANCE SYSTEM</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/tired/tree/main">
-            <div><h3>PlanningCore</h3><p>純 Swift weekly planner；測 priority、deadline、busy blocks、locked tasks 與 capacity，只展示已整理的 main 實作。</p></div>
-            <span class="lab-meta">SWIFT / PLANNING</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/Gesture">
-            <div><h3>Motion Lab</h3><p>Android accelerometer → magnitude → RMS / peak → Steady / Moving / Shake。</p></div>
-            <span class="lab-meta">MOBILE SENSOR</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/learnpy">
-            <div><h3>Python Practice Judge</h3><p>以 AST + rubric 檢查函式、參數、控制流程與禁止 API，保留 deterministic feedback。</p></div>
-            <span class="lab-meta">STATIC ANALYSIS</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/demand-sensing-lite">
-            <div><h3>Demand Sensing Lite</h3><p>多 SKU 需求感知接補貨模擬；時間切分 forecast 後比較 (s,S) 與 naive 的服務水準、平均庫存與下單次數。</p></div>
-            <span class="lab-meta">FORECAST / INVENTORY</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/pucar">
-            <div><h3>DriveCost Lab</h3><p>把車貸、折舊、油耗與固定成本放進同一個持有情境，避免只用月付判斷方案。</p></div>
-            <span class="lab-meta">DECISION MODEL</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/cloudchatbot">
-            <div><h3>Grounded Search Lab</h3><p>BM25 文件檢索、來源保留、abstain，以及 Recall@k / MRR 的小型 evaluation harness。</p></div>
-            <span class="lab-meta">IR / EVALUATION</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/misnew">
-            <div><h3>EventOps Console</h3><p>離線活動簽到與容量控制；append-only event log、去重、replay 與 local-first 操作。</p></div>
-            <span class="lab-meta">PWA / EVENT LOG</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/class501">
-            <div><h3>Policy Gate</h3><p>RBAC + attribute conditions、deny-overrides 與可解釋的 authorization decision；規則順序與預設拒絕皆可測。</p></div>
-            <span class="lab-meta">AUTHZ / SECURITY</span>
-          </a>
-          <a class="lab" href="/labs/tracepath/">
-            <div><h3>Tracepath</h3><p>檢查 span parent/child 結構、exclusive time、重疊 child spans 與 boundary anomaly，避免把 waterfall 畫出來就當成 tracing 分析。</p></div>
-            <span class="lab-meta">TRACING / OBSERVABILITY</span>
-          </a>
-          <a class="lab" href="/labs/flagrail/">
-            <div><h3>Flagrail</h3><p>ordered targeting rules、stable rollout bucket、kill switch 與 decision reason；同一個 subject 的 rollout 結果可重現。</p></div>
-            <span class="lab-meta">CONFIG / FEATURE FLAGS</span>
-          </a>
-          <a class="lab" href="/labs/lineageguard/">
-            <div><h3>LineageGuard</h3><p>從 schema diff 往下追 column-level lineage，標出 breaking change 對 mart、export 與 dashboard 的實際 blast radius。</p></div>
-            <span class="lab-meta">DATA LINEAGE / CONTRACT</span>
-          </a>
-          <a class="lab" href="/labs/txnscope/">
-            <div><h3>TxnScope</h3><p>用 snapshot version 與 compare-on-commit 重現 lost update；兩個正確的操作若同時發生，也必須能顯式偵測 stale write。</p></div>
-            <span class="lab-meta">DB / CONCURRENCY</span>
-          </a>
-          <a class="lab" href="/labs/sessionsentry/">
-            <div><h3>SessionSentry</h3><p>Session rotation、idle / absolute expiry、revocation、舊 token replay 與 CSRF mutation check 的防禦型狀態模型。</p></div>
-            <span class="lab-meta">SESSION / SECURITY</span>
-          </a>
-          <a class="lab" href="/labs/eventlane/">
-            <div><h3>Eventlane</h3><p>at-least-once delivery、consumer idempotency、exponential retry、poison event、DLQ 與 repair/replay。</p></div>
-            <span class="lab-meta">EVENTS / RELIABILITY</span>
-          </a>
-          <a class="lab" href="/labs/syncbench/">
-            <div><h3>Syncbench</h3><p>兩個離線 replica 的 logical clock、same-field conflict、deterministic merge 與 convergence 測試；同步規則可以直接操作與檢查。</p></div>
-            <span class="lab-meta">LOCAL-FIRST / SYNC</span>
-          </a>
-          <a class="lab" href="/labs/rampwatch/">
-            <div><h3>Rampwatch</h3><p>用 error rate、Wilson interval 與 p95 latency guardrail 判斷 canary 要 advance、hold 或 rollback。</p></div>
-            <span class="lab-meta">RELEASE / SRE</span>
-          </a>
-          <a class="lab" href="https://github.com/Miiduoa/line-bot-app">
-            <div><h3>Webhook SLO Workbench</h3><p>first-attempt success、retry recovery、p95 latency、error budget 與 burn-rate incident detection。</p></div>
-            <span class="lab-meta">SRE / OBSERVABILITY</span>
-          </a>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <div class="section-kicker">Evidence</div>
-          <h2>用細節取代形容詞。</h2>
-        </div>
-        <div class="proof-grid">
-          <div class="proof"><strong>4 × 4 × ~730</strong><span>Retail Ops DSS 的門市 × 品類 × 日資料規模</span></div>
-          <div class="proof"><strong>Web + Mobile</strong><span>Campus One 同時維護跨端產品與後端資料流</span></div>
-          <div class="proof"><strong>macOS + Windows</strong><span>nowrite 具桌面封裝與 CI 建置流程</span></div>
-          <div class="proof"><strong>CI + tests</strong><span>新作品保留自動測試與可重現執行方式，不只展示結果畫面</span></div>
-        </div>
-      </section>
-
-      <section id="approach">
-        <div class="section-head">
-          <div class="section-kicker">How I work</div>
-          <h2>我想展示的不是工具，<br>是判斷過程。</h2>
-        </div>
-        <div class="process">
-          <article>
-            <h3>先定義問題</h3>
-            <p>先確定使用者、決策點與限制，再決定要不要用機器學習。沒有決策問題，就不急著做模型。</p>
-          </article>
-          <article>
-            <h3>建立可比較基準</h3>
-            <p>保留 baseline、資料切分與評估指標。讓改進是可以被檢查的，不用「看起來比較準」來描述。</p>
-          </article>
-          <article>
-            <h3>做成可以操作的產品</h3>
-            <p>Dashboard、Web、Mobile 或桌面工具只是載體；真正目標是讓結果能被讀懂、採取下一步，並留下限制。</p>
-          </article>
-        </div>
-      </section>
-
-      <section>
-        <div class="contact">
-          <div>
-            <div class="section-kicker">Contact</div>
-            <h2 style="margin-top:14px">想看程式，直接從 repo 開始。</h2>
-            <p>所有精選作品都附執行方式、方法與已知限制。比起一段漂亮自介，我更希望作品本身能回答問題。</p>
-          </div>
-          <div class="cta-row">
-            <a class="btn primary" href="https://github.com/Miiduoa">GitHub Profile</a>
-            <a class="btn" href="https://www.kaggle.com/kuchinwei">Kaggle</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© 2026 顧晉瑋</span>
-      <span>Built as a static GitHub Pages portfolio.</span>
-    </footer>
-  </div>
+      <div class="selected-grid">
+        <article class="selected"><div><h3>Tracefold</h3><p>在本機分析 HAR，沿著請求時間軸找出慢請求、傳輸量與失敗原因。</p><div class="project-links"><a href="/tracefold/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></div><span class="index">03</span></article>
+        <article class="selected"><div><h3>Patchday</h3><p>在獨立 SQLite 快照預演 migration，檢查結構差異、限制與資料損失。</p><div class="project-links"><a href="/patchday/">範例報告 ↗</a><a href="https://github.com/Miiduoa/patchday">原始碼</a></div></div><span class="index">04</span></article>
+        <article class="selected"><div><h3>Campus One</h3><p>以 Expo、Next.js 與 Firebase 整合課程、訊息、地圖和交通的跨端校園專題。</p><div class="project-links"><a href="https://github.com/Miiduoa/graduation">查看專案 ↗</a></div></div><span class="index">05</span></article>
+        <article class="selected"><div><h3>Retail Ops DSS</h3><p>銷量預測接到補貨與人力規劃，保留時間切分、baseline 與誤差比較。</p><div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">查看專案 ↗</a></div></div><span class="index">06</span></article>
+      </div>
+    </section>
+    <section aria-labelledby="other-title">
+      <div class="section-head"><h2 id="other-title">其他專案</h2><span>MORE EXPLORATIONS</span></div>
+      <div class="other-grid">
+        <a class="other" href="https://github.com/Miiduoa/nowrite"><div><strong>nowrite</strong><small>文字轉手寫圖片與 PDF / Vue · FastAPI · Electron</small></div><span aria-hidden="true">↗</span></a>
+        <a class="other" href="https://github.com/Miiduoa/line-bot"><div><strong>Reliable LINE Webhook</strong><small>持久化 inbox / outbox、去重與失敗重試</small></div><span aria-hidden="true">↗</span></a>
+        <a class="other" href="https://github.com/Miiduoa/byline"><div><strong>Byline</strong><small>可放進版本控制的 CSV dataset contract</small></div><span aria-hidden="true">↗</span></a>
+        <a class="other" href="https://github.com/Miiduoa/mymis"><div><strong>Product Analytics Lab</strong><small>A/B test、資料品質與 cohort 分析</small></div><span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <details><summary>工程實驗 · Tracing、Concurrency、Data lineage 等</summary><div class="studies"><div><a href="/labs/tracepath/">Tracepath ↗</a><small>Distributed tracing</small></div><div><a href="/labs/flagrail/">Flagrail ↗</a><small>Feature flags</small></div><div><a href="/labs/lineageguard/">LineageGuard ↗</a><small>Schema evolution</small></div><div><a href="/labs/txnscope/">TxnScope ↗</a><small>Optimistic concurrency</small></div><div><a href="/labs/sessionsentry/">SessionSentry ↗</a><small>Session lifecycle</small></div><div><a href="/labs/eventlane/">Eventlane ↗</a><small>Event delivery</small></div><div><a href="/labs/syncbench/">Syncbench ↗</a><small>Offline synchronization</small></div><div><a href="/labs/rampwatch/">Rampwatch ↗</a><small>Release guardrails</small></div></div></details>
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-head"><h2 id="about-title">關於這些作品</h2><span>NOTES</span></div>
+      <div class="about"><p>作品從具體任務出發：整理一批圖片、校正字幕、查慢請求，或檢查資料庫變更。介面之外，原始碼也記錄檔案限制、錯誤處理與驗證方法。</p><p>Cuework 的線上工作區儲存在目前瀏覽器；需要 SQLite 版本紀錄時，可以啟動 repo 內的本機服務。其他專案的執行條件與限制，以各自 README 為準。</p></div>
+    </section>
+  </main>
+  <footer><span>© 2026 顧晉瑋 / Miiduoa</span><div class="footer-links"><a href="https://github.com/Miiduoa">GitHub</a><a href="https://www.kaggle.com/kuchinwei">Kaggle</a><a href="mailto:demohan513@gmail.com">Email</a></div></footer>
+</div>
 </body>
 </html>
