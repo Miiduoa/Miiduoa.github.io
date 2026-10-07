@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f3f0e8">
-  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 跨端旗艦系統，以及路線分析、音訊剪輯、產品工具、資料分析與可驗證的系統實驗。">
+  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 跨端旗艦系統，以及 PDF 拼版、佇列模擬、Web 工具與資料分析。">
   <title>顧晉瑋 — 作品集</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
@@ -41,6 +41,20 @@
       </article>
       <div class="featured">
         <article class="project">
+          <a class="preview" href="/foldpress/" aria-label="開啟 Foldpress PDF 小冊子拼版"><img src="/assets/foldpress.png" alt="Foldpress 的 PDF 頁序、紙張與拼版預覽" width="1440" height="1450" loading="lazy"></a>
+          <div class="project-head"><h3>Foldpress</h3><span>PDF 小冊子拼版</span></div>
+          <p>把 PDF 排成可對折裝訂的小冊子。先檢查每張紙的正反面頁序，再匯出列印檔，製作講義、活動手冊或短篇刊物。</p>
+          <p class="detail">TypeScript / PDF 拼版 · 檔案在瀏覽器處理</p>
+          <div class="project-links"><a class="primary" href="/foldpress/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/foldpress">原始碼</a><a href="https://github.com/Miiduoa/foldpress/blob/main/docs/decisions.md">設計說明</a></div>
+        </article>
+        <article class="project">
+          <a class="preview" href="/relaylab/" aria-label="開啟 Relaylab 佇列重試模擬器"><img src="/assets/relaylab.png" alt="Relaylab 的 worker 投遞時間軸、訊息狀態與事件紀錄" width="1440" height="1450" loading="lazy"></a>
+          <div class="project-head"><h3>Relaylab</h3><span>佇列重試模擬器</span></div>
+          <p>觀察 ACK 遺失、租約過期與重試如何造成重複投遞。沿著時間軸逐步檢查處理過程，再用相同種子比較冪等寫入前後的結果。</p>
+          <p class="detail">TypeScript / 離散事件模擬 / CLI · 種子重播與投遞租約</p>
+          <div class="project-links"><a class="primary" href="/relaylab/">開啟模擬器 ↗</a><a href="https://github.com/Miiduoa/relaylab">原始碼</a><a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md">模型說明</a></div>
+        </article>
+        <article class="project">
           <a class="preview" href="/contractscope/" aria-label="開啟 Contractscope API 合約比較"><img src="/assets/contractscope.png" alt="Contractscope 的規格輸入、差異清單與變更說明" width="1440" height="1320" loading="lazy"></a>
           <div class="project-head"><h3>Contractscope</h3><span>API 合約比較</span></div>
           <p>比較前後兩份 OpenAPI 規格，逐項查看可能影響呼叫端的變更。把已辨識的風險與尚未涵蓋的規則分開呈現。</p>
@@ -68,27 +82,15 @@
           <p class="detail">TypeScript / Web Audio / PCM · 檔案在瀏覽器處理</p>
           <div class="project-links"><a class="primary" href="/roomtone/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/roomtone">原始碼</a></div>
         </article>
-        <article class="project">
-          <a class="preview" href="/stillroom/" aria-label="開啟 Stillroom 圖片工作台"><img src="/assets/stillroom.jpg" alt="Stillroom 的圖片預覽、匯出設定與批次清單" width="1440" height="900" fetchpriority="high"></a>
-          <div class="project-head"><h3>Stillroom</h3><span>圖片工作台</span></div>
-          <p>把一批圖片整理成可交付的檔案。調整尺寸、裁切與格式，檢查輸出大小，再一次打包下載。</p>
-          <p class="detail">TypeScript / Canvas / ZIP · 圖片在瀏覽器處理</p>
-          <div class="project-links"><a class="primary" href="/stillroom/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/stillroom">原始碼</a></div>
-        </article>
-        <article class="project">
-          <a class="preview" href="/cuework/" aria-label="開啟 Cuework 字幕工作台"><img src="/assets/cuework.jpg" alt="Cuework 的字幕清單、時間軸與編輯面板" width="1440" height="900" fetchpriority="high"></a>
-          <div class="project-head"><h3>Cuework</h3><span>字幕編輯器</span></div>
-          <p>修正字幕的文字與時間。找出重疊、調整整段時間偏移，完成後匯出 SRT 或 WebVTT。</p>
-          <p class="detail">TypeScript / Node.js / SQLite · 線上版採瀏覽器儲存</p>
-          <div class="project-links"><a class="primary" href="/cuework/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/cuework">原始碼與本機版</a></div>
-        </article>
       </div>
       <div class="selected-grid">
-        <article class="selected"><div><h3>Tracefold</h3><p>在本機分析 HAR，沿著請求時間軸找出慢請求、傳輸量與失敗原因。</p><div class="project-links"><a href="/tracefold/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></div><span class="index">07</span></article>
-        <article class="selected"><div><h3>Patchday</h3><p>在獨立 SQLite 快照預演 migration，檢查結構差異、限制與資料損失。</p><div class="project-links"><a href="/patchday/">範例報告 ↗</a><a href="https://github.com/Miiduoa/patchday">原始碼</a></div></div><span class="index">08</span></article>
-        <article class="selected"><div><h3>Retail Ops DSS</h3><p>銷量預測接到補貨與人力規劃，保留時間切分、baseline 與誤差比較。</p><div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">查看專案 ↗</a></div></div><span class="index">09</span></article>
-        <article class="selected"><div><h3>Carry · 現金流比較</h3><p>等額本息與固定投資報酬的公平情境比較，顯示貸款餘額、報酬敏感度與模型限制。</p><div class="project-links"><a href="/tools/carry/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/carry">模型與測試</a></div></div><span class="index">10</span></article>
-        <article class="selected"><div><h3>Capacity · 服務量能</h3><p>以 Erlang C 排隊模型估計等待機率，量化一般及尖峰時段的服務席數需求。</p><div class="project-links"><a href="/tools/capacity/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/capacity">模型與測試</a></div></div><span class="index">11</span></article>
+        <article class="selected"><div><h3>Stillroom</h3><p>批次整理圖片尺寸、裁切與格式，檢查輸出大小，再一次打包下載。</p><div class="project-links"><a href="/stillroom/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/stillroom">原始碼</a></div></div><span class="index">07</span></article>
+        <article class="selected"><div><h3>Cuework</h3><p>修正字幕文字與時間、找出重疊，匯出 SRT 或 WebVTT。線上版採瀏覽器儲存。</p><div class="project-links"><a href="/cuework/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/cuework">原始碼與本機版</a></div></div><span class="index">08</span></article>
+        <article class="selected"><div><h3>Tracefold</h3><p>在本機分析 HAR，沿著請求時間軸找出慢請求、傳輸量與失敗原因。</p><div class="project-links"><a href="/tracefold/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></div><span class="index">09</span></article>
+        <article class="selected"><div><h3>Patchday</h3><p>在獨立 SQLite 快照預演 migration，檢查結構差異、限制與資料損失。</p><div class="project-links"><a href="/patchday/">範例報告 ↗</a><a href="https://github.com/Miiduoa/patchday">原始碼</a></div></div><span class="index">10</span></article>
+        <article class="selected"><div><h3>Retail Ops DSS</h3><p>銷量預測接到補貨與人力規劃，保留時間切分、baseline 與誤差比較。</p><div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">查看專案 ↗</a></div></div><span class="index">11</span></article>
+        <article class="selected"><div><h3>Carry · 現金流比較</h3><p>等額本息與固定投資報酬的公平情境比較，顯示貸款餘額、報酬敏感度與模型限制。</p><div class="project-links"><a href="/tools/carry/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/carry">模型與測試</a></div></div><span class="index">12</span></article>
+        <article class="selected"><div><h3>Capacity · 服務量能</h3><p>以 Erlang C 排隊模型估計等待機率，量化一般及尖峰時段的服務席數需求。</p><div class="project-links"><a href="/tools/capacity/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/capacity">模型與測試</a></div></div><span class="index">13</span></article>
       </div>
     </section>
     <section aria-labelledby="other-title">
@@ -103,7 +105,7 @@
     <details><summary>工程實驗 · Tracing、Concurrency、Data lineage 等</summary><div class="studies"><div><a href="/labs/tracepath/">Tracepath ↗</a><small>Distributed tracing</small></div><div><a href="/labs/flagrail/">Flagrail ↗</a><small>Feature flags</small></div><div><a href="/labs/lineageguard/">LineageGuard ↗</a><small>Schema evolution</small></div><div><a href="/labs/txnscope/">TxnScope ↗</a><small>Optimistic concurrency</small></div><div><a href="/labs/sessionsentry/">SessionSentry ↗</a><small>Session lifecycle</small></div><div><a href="/labs/eventlane/">Eventlane ↗</a><small>Event delivery</small></div><div><a href="/labs/syncbench/">Syncbench ↗</a><small>Offline synchronization</small></div><div><a href="/labs/rampwatch/">Rampwatch ↗</a><small>Release guardrails</small></div></div></details>
     <section id="about" aria-labelledby="about-title">
       <div class="section-head"><h2 id="about-title">關於這些作品</h2><span>設計與實作</span></div>
-      <div class="about"><p>Campus One 是目前的旗艦系統；其他作品把 API 合約比較、動畫設計、路線分析、音訊剪輯、圖片交付、字幕、網路追蹤、資料庫變更、資料分析、借貸決策、服務量能與可靠性問題拆成更小、可操作、可驗證的題目。</p><p>我刻意把限制、失敗情境與尚未完成的邊界留在 README，而不是只展示順利的 happy path。工程實驗放在下方折疊區，不和主要產品搶第一層注意力。</p></div>
+      <div class="about"><p>Campus One 是目前的旗艦系統；其他作品把 PDF 拼版、訊息投遞、API 合約比較、動畫設計、路線分析、音訊剪輯、圖片交付、字幕、網路追蹤、資料庫變更、資料分析、借貸決策、服務量能與可靠性問題拆成更小、可操作、可驗證的題目。</p><p>我刻意把限制、失敗情境與尚未完成的邊界留在 README，而不是只展示順利的 happy path。工程實驗放在下方折疊區，不和主要產品搶第一層注意力。</p></div>
     </section>
   </main>
   <footer><span>© 2026 顧晉瑋 / Miiduoa</span><div class="footer-links"><a href="https://github.com/Miiduoa">GitHub</a><a href="https://www.kaggle.com/kuchinwei">Kaggle</a><a href="mailto:demohan513@gmail.com">Email</a></div></footer>
