@@ -10,6 +10,9 @@
 
 | Lab | What it makes visible |
 |---|---|
+| [Tracepath](https://miiduoa.github.io/labs/tracepath/) | trace structure、exclusive time、boundary validation |
+| [Flagrail](https://miiduoa.github.io/labs/flagrail/) | targeting rules、stable rollout、kill switch |
+| [LineageGuard](https://miiduoa.github.io/labs/lineageguard/) | schema diff、column lineage、blast radius |
 | [TxnScope](https://miiduoa.github.io/labs/txnscope/) | lost update、snapshot version、optimistic conflict、retry |
 | [SessionSentry](https://miiduoa.github.io/labs/sessionsentry/) | session rotation、expiry、revocation、CSRF |
 | [Eventlane](https://miiduoa.github.io/labs/eventlane/) | at-least-once delivery、idempotency、retry、DLQ |
