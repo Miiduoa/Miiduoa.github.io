@@ -18,4 +18,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node --test labs/syncbench/core.test.mjs labs/rampwatch/core.test.mjs
+      - run: node --test labs/*/core.test.mjs
