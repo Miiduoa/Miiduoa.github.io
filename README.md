@@ -6,6 +6,15 @@
 - GitHub: https://github.com/Miiduoa
 - Focus: Information Management / Product Analytics / Decision Support / Data Reliability / Systems
 
+## Decision workbenches
+
+| Workbench | What it makes visible |
+|---|---|
+| [Carry](https://miiduoa.github.io/tools/carry/) | Financing vs. cash purchase, debt-adjusted terminal wealth, return sensitivity |
+| [Capacity](https://miiduoa.github.io/tools/capacity/) | Erlang C staffing, waiting-time target, surge sensitivity |
+
+Core models are standalone ES modules. Run `node --test tools/*/core.test.mjs` to verify.
+
 ## Interactive engineering labs
 
 | Lab | What it makes visible |

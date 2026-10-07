@@ -1,13 +1,15 @@
-name: lab-tests
+name: project-model-tests
 
 on:
   push:
     paths:
       - "labs/**"
+      - "tools/**"
       - ".github/workflows/lab-tests.yml"
   pull_request:
     paths:
       - "labs/**"
+      - "tools/**"
       - ".github/workflows/lab-tests.yml"
 
 jobs:
@@ -18,4 +20,4 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: node --test labs/*/core.test.mjs
+      - run: node --test labs/*/core.test.mjs tools/*/core.test.mjs
