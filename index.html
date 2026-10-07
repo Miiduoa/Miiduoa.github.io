@@ -41,6 +41,20 @@
       </article>
       <div class="featured">
         <article class="project">
+          <a class="preview" href="/contractscope/" aria-label="開啟 Contractscope API 合約比較"><img src="/assets/contractscope.png" alt="Contractscope 的規格輸入、差異清單與變更說明" width="1440" height="1320" loading="lazy"></a>
+          <div class="project-head"><h3>Contractscope</h3><span>API 合約比較</span></div>
+          <p>比較前後兩份 OpenAPI 規格，逐項查看可能影響呼叫端的變更。把已辨識的風險與尚未涵蓋的規則分開呈現。</p>
+          <p class="detail">TypeScript / OpenAPI / CLI · 在本機比較規格</p>
+          <div class="project-links"><a class="primary" href="/contractscope/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a><a href="https://github.com/Miiduoa/contractscope/blob/main/docs/design.zh-TW.md">設計說明</a></div>
+        </article>
+        <article class="project">
+          <a class="preview" href="/motionbench/" aria-label="開啟 Motionbench 動畫工作台"><img src="/assets/motionbench.png" alt="Motionbench 的彈簧參數、動畫軌跡與曲線預覽" width="1440" height="1320" loading="lazy"></a>
+          <div class="project-head"><h3>Motionbench</h3><span>動畫工作台</span></div>
+          <p>調整彈簧與 Bézier 動畫，觀察參數如何改變軌跡。從即時預覽到程式碼匯出，把動畫節奏帶回自己的介面。</p>
+          <p class="detail">TypeScript / 彈簧模型 / CSS easing · 動態預覽與程式碼匯出</p>
+          <div class="project-links"><a class="primary" href="/motionbench/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/motionbench">原始碼</a><a href="https://github.com/Miiduoa/motionbench/blob/main/docs/design.zh-TW.md">設計說明</a></div>
+        </article>
+        <article class="project">
           <a class="preview" href="/switchback/" aria-label="開啟 Switchback 路線分析"><img src="/assets/switchback.png" alt="Switchback 的路線圖、海拔剖面與分段紀錄" width="1440" height="1200" loading="lazy"></a>
           <div class="project-head"><h3>Switchback</h3><span>GPX 路線分析</span></div>
           <p>打開一段 GPX 紀錄，沿著路線查看距離與海拔。分開處理中斷的軌跡，保留資料缺口，匯出分析結果。</p>
@@ -70,9 +84,9 @@
         </article>
       </div>
       <div class="selected-grid">
-        <article class="selected"><div><h3>Tracefold</h3><p>在本機分析 HAR，沿著請求時間軸找出慢請求、傳輸量與失敗原因。</p><div class="project-links"><a href="/tracefold/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></div><span class="index">05</span></article>
-        <article class="selected"><div><h3>Patchday</h3><p>在獨立 SQLite 快照預演 migration，檢查結構差異、限制與資料損失。</p><div class="project-links"><a href="/patchday/">範例報告 ↗</a><a href="https://github.com/Miiduoa/patchday">原始碼</a></div></div><span class="index">06</span></article>
-        <article class="selected"><div><h3>Retail Ops DSS</h3><p>銷量預測接到補貨與人力規劃，保留時間切分、baseline 與誤差比較。</p><div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">查看專案 ↗</a></div></div><span class="index">07</span></article>
+        <article class="selected"><div><h3>Tracefold</h3><p>在本機分析 HAR，沿著請求時間軸找出慢請求、傳輸量與失敗原因。</p><div class="project-links"><a href="/tracefold/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></div><span class="index">07</span></article>
+        <article class="selected"><div><h3>Patchday</h3><p>在獨立 SQLite 快照預演 migration，檢查結構差異、限制與資料損失。</p><div class="project-links"><a href="/patchday/">範例報告 ↗</a><a href="https://github.com/Miiduoa/patchday">原始碼</a></div></div><span class="index">08</span></article>
+        <article class="selected"><div><h3>Retail Ops DSS</h3><p>銷量預測接到補貨與人力規劃，保留時間切分、baseline 與誤差比較。</p><div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">查看專案 ↗</a></div></div><span class="index">09</span></article>
       </div>
     </section>
     <section aria-labelledby="other-title">
@@ -87,7 +101,7 @@
     <details><summary>工程實驗 · Tracing、Concurrency、Data lineage 等</summary><div class="studies"><div><a href="/labs/tracepath/">Tracepath ↗</a><small>Distributed tracing</small></div><div><a href="/labs/flagrail/">Flagrail ↗</a><small>Feature flags</small></div><div><a href="/labs/lineageguard/">LineageGuard ↗</a><small>Schema evolution</small></div><div><a href="/labs/txnscope/">TxnScope ↗</a><small>Optimistic concurrency</small></div><div><a href="/labs/sessionsentry/">SessionSentry ↗</a><small>Session lifecycle</small></div><div><a href="/labs/eventlane/">Eventlane ↗</a><small>Event delivery</small></div><div><a href="/labs/syncbench/">Syncbench ↗</a><small>Offline synchronization</small></div><div><a href="/labs/rampwatch/">Rampwatch ↗</a><small>Release guardrails</small></div></div></details>
     <section id="about" aria-labelledby="about-title">
       <div class="section-head"><h2 id="about-title">關於這些作品</h2><span>設計與實作</span></div>
-      <div class="about"><p>Campus One 是目前的旗艦系統；其他作品把路線分析、音訊剪輯、圖片交付、字幕、網路追蹤、資料庫變更、資料分析與可靠性問題拆成更小、可操作、可驗證的題目。</p><p>我刻意把限制、失敗情境與尚未完成的邊界留在 README，而不是只展示順利的 happy path。工程實驗放在下方折疊區，不和主要產品搶第一層注意力。</p></div>
+      <div class="about"><p>Campus One 是目前的旗艦系統；其他作品把 API 合約比較、動畫設計、路線分析、音訊剪輯、圖片交付、字幕、網路追蹤、資料庫變更、資料分析與可靠性問題拆成更小、可操作、可驗證的題目。</p><p>我刻意把限制、失敗情境與尚未完成的邊界留在 README，而不是只展示順利的 happy path。工程實驗放在下方折疊區，不和主要產品搶第一層注意力。</p></div>
     </section>
   </main>
   <footer><span>© 2026 顧晉瑋 / Miiduoa</span><div class="footer-links"><a href="https://github.com/Miiduoa">GitHub</a><a href="https://www.kaggle.com/kuchinwei">Kaggle</a><a href="mailto:demohan513@gmail.com">Email</a></div></footer>
