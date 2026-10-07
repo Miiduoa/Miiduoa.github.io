@@ -72,9 +72,9 @@
     <div class="card proof"><strong>Expo + Next.js</strong><span>Mobile / Web 兩個主要 client surface</span></div>
     <div class="card proof"><strong>Firebase</strong><span>Functions + Firestore + Storage rules</span></div>
     <div class="card proof"><strong>Shared TS</strong><span>共用 contract 與角色規則</span></div>
-    <div class="card proof"><strong>Unit + Rules</strong><span>Mobile、Web、Functions、security rules 分開驗證</span></div>
-    <div class="card proof"><strong>Maestro E2E</strong><span>UI flow 與 unit tests 分離</span></div>
-    <div class="card proof"><strong>CI gates</strong><span>lint、typecheck、security、build 與測試不是同一個模糊 job</span></div>
+    <div class="card proof"><strong>1212 Mobile</strong><span>最近完整成功 baseline 的 Mobile tests</span></div>
+    <div class="card proof"><strong>124 Functions</strong><span>backend function tests；另有 43 Web + 28 rules tests</span></div>
+    <div class="card proof"><strong>CI gates</strong><span>lint、typecheck、security、build 與測試分開；數字與已知債務可追到 evidence page</span></div>
   </div>
 </section>
 
@@ -91,10 +91,10 @@
   <div class="review">
     <div class="path">
       <div>README：先理解產品與 monorepo 範圍</div>
+      <div>Architecture overview：先看 Mobile / Web / Backend / data boundary</div>
+      <div>ADR：確認 monorepo、權限與 AI 邊界為什麼這樣選</div>
       <div>Mobile demo：確認實際 UI，不看概念稿</div>
-      <div>Role + data flow：確認權限不是只有前端按鈕</div>
-      <div>CI workflow：確認驗證面與 failure boundaries</div>
-      <div>AI architecture：確認 AI 的資料與 action 邊界</div>
+      <div>Testing evidence：確認測試數字、security gate 與尚未清掉的驗證債務</div>
     </div>
     <div class="quote">「如果只有兩分鐘，我希望作品本身能證明它不是一組畫面，而是一套有邊界、有失敗情境、也有驗證方法的系統。」<small>Campus One review principle</small></div>
   </div>
@@ -106,7 +106,7 @@
     <div class="yes"><h3>目前可檢查</h3><ul><li>Mobile / Web / Backend monorepo</li><li>角色與導航邏輯</li><li>Firebase rules 與 backend boundary</li><li>測試、CI 與 E2E workflow</li><li>repo 內實際 Mobile 截圖</li></ul></div>
     <div class="no"><h3>明確不宣稱</h3><ul><li>正式接管校務權威資料</li><li>所有外部服務已正式部署</li><li>所有願景功能都已完整落地</li><li>AI provider 在任何裝置都同樣可用</li><li>demo data 等於真實校園營運資料</li></ul></div>
   </div>
-  <div class="cta" style="margin-top:26px"><a class="btn primary" href="https://github.com/Miiduoa/graduation">打開 Campus One repo</a><a class="btn" href="https://github.com/Miiduoa/graduation/actions">查看 GitHub Actions</a></div>
+  <div class="cta" style="margin-top:26px"><a class="btn primary" href="https://github.com/Miiduoa/graduation">打開 Campus One repo</a><a class="btn" href="https://github.com/Miiduoa/graduation/blob/main/docs/ARCHITECTURE_OVERVIEW.md">Architecture</a><a class="btn" href="https://github.com/Miiduoa/graduation/blob/main/docs/adr/README.md">ADRs</a><a class="btn" href="https://github.com/Miiduoa/graduation/blob/main/docs/TESTING_EVIDENCE.md">Testing evidence</a></div>
 </section>
 
 <footer class="footer"><span>© 2026 顧晉瑋</span><span>Campus One flagship case study · evidence from the maintained repo.</span></footer>
