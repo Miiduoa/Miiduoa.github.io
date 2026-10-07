@@ -3,7 +3,7 @@ function bounded(value, key, min, max) {
   if (!Number.isFinite(value) || value < min || value > max) throw new RangeError(key + ' out of range');
 }
 export function queue({ arrival, serviceMinutes, servers, targetMinutes = 5 }) {
-  bounded(arrival, 'arrival', 0, 5000);
+  bounded(arrival, 'arrival', 0, 15000);
   bounded(serviceMinutes, 'serviceMinutes', .5, 60);
   bounded(targetMinutes, 'targetMinutes', .1, 60);
   if (!Number.isInteger(servers) || servers < 1 || servers > 120) throw new RangeError('servers out of range');
