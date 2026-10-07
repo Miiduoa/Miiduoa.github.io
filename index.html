@@ -393,6 +393,18 @@
             <div><h3>Policy Gate</h3><p>RBAC + attribute conditions、deny-overrides 與可解釋的 authorization decision；規則順序與預設拒絕皆可測。</p></div>
             <span class="lab-meta">AUTHZ / SECURITY</span>
           </a>
+          <a class="lab" href="/labs/txnscope/">
+            <div><h3>TxnScope</h3><p>用 snapshot version 與 compare-on-commit 重現 lost update；兩個正確的操作若同時發生，也必須能顯式偵測 stale write。</p></div>
+            <span class="lab-meta">DB / CONCURRENCY</span>
+          </a>
+          <a class="lab" href="/labs/sessionsentry/">
+            <div><h3>SessionSentry</h3><p>Session rotation、idle / absolute expiry、revocation、舊 token replay 與 CSRF mutation check 的防禦型狀態模型。</p></div>
+            <span class="lab-meta">SESSION / SECURITY</span>
+          </a>
+          <a class="lab" href="/labs/eventlane/">
+            <div><h3>Eventlane</h3><p>at-least-once delivery、consumer idempotency、exponential retry、poison event、DLQ 與 repair/replay。</p></div>
+            <span class="lab-meta">EVENTS / RELIABILITY</span>
+          </a>
           <a class="lab" href="/labs/syncbench/">
             <div><h3>Syncbench</h3><p>兩個離線 replica 的 logical clock、same-field conflict、deterministic merge 與 convergence 測試；同步規則可以直接操作與檢查。</p></div>
             <span class="lab-meta">LOCAL-FIRST / SYNC</span>
