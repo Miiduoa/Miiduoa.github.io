@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Proofline：在瀏覽器驗證 SHA-256 稽核事件雜湊鏈，重現事件改寫、重排、截斷與外部檢查點驗證。">
+<link rel="canonical" href="https://miiduoa.github.io/labs/proofline/">
+<title>Proofline — 可驗證的稽核紀錄</title>
+<style>
+:root{color-scheme:light;--bg:#f2efe6;--paper:#fbfaf6;--ink:#242b27;--muted:#69736a;--line:#d6dcd2;--accent:#315f4e;--danger:#aa504a;--warn:#996e2c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif}
+a{color:var(--accent);text-underline-offset:4px}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.shell{width:min(1140px,calc(100% - 40px));margin:auto}
+header{padding:60px 0 34px;border-bottom:1px solid var(--ink)}
+.kicker{font:700 11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.15em;color:var(--accent)}
+h1{font-size:clamp(41px,7vw,78px);font-weight:600;letter-spacing:-.06em;line-height:1.08;max-width:940px;margin:17px 0 18px}
+header p{font-size:17px;max-width:750px;color:var(--muted)}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}
+button,.file{font:inherit;color:var(--ink);border:1px solid #bfc9be;border-radius:8px;background:var(--paper);padding:9px 13px;cursor:pointer}
+button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button:disabled{cursor:not-allowed;opacity:.45}
+.grid{display:grid;grid-template-columns:1fr .82fr;gap:15px;margin:20px 0 15px}
+.panel{padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:12px;min-width:0}
+.panel h2{margin:0 0 15px;font-size:12px;letter-spacing:.055em;color:var(--muted);font-weight:650}
+.status{display:block;letter-spacing:-.045em;font-size:clamp(26px,3vw,38px);font-weight:650;line-height:1.24}
+.status[data-status=verified]{color:var(--accent)}
+.status[data-status=unanchored]{color:var(--warn)}
+.status[data-status=failed]{color:var(--danger)}
+#explanation{color:var(--muted);min-height:46px}
+.label{font-size:12px;color:var(--muted);margin:16px 0 7px}
+.hash{padding:11px;background:#ecf1e9;border:1px solid var(--line);border-radius:7px;font:12px/1.6 ui-monospace,SFMono-Regular,monospace;overflow-wrap:anywhere}
+.toggle{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--muted);margin-top:15px}
+.toggle input{margin-top:5px;flex-shrink:0}
+.file{position:relative;display:inline-flex;align-items:center;overflow:hidden}
+.file input{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer}
+.note{color:var(--muted);margin-top:0;font-size:14px}
+#message{font-size:13px;color:var(--warn);min-height:23px}
+.data{margin-bottom:18px}.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;text-align:left;min-width:760px}
+th,td{padding:13px 11px;border-bottom:1px solid var(--line);font-size:13px}
+th{color:var(--muted);font-weight:550}
+td{vertical-align:top}
+.mono{font:12px ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums}
+footer{padding:7px 0 58px;color:var(--muted);font-size:13px;max-width:930px}
+@media(max-width:790px){header{padding-top:37px}.grid{grid-template-columns:1fr}.shell{width:calc(100% - 26px)}}
+</style>
+</head>
+<body><div class="shell">
+<header>
+<div class="kicker">SECURITY ENGINEERING / EVENT INTEGRITY</div>
+<h1>有紀錄，不代表<br>留得住證據。</h1>
+<p>把事件、序號與前一筆雜湊接成 SHA-256 鏈。故意竄改其中一筆、交換順序或刪掉尾端，再比較「鏈內一致」和「獨立檢查點一致」到底差在哪裡。</p>
+<div class="buttons" aria-label="竄改情境">
+<button data-case="original" aria-pressed="true">原始紀錄</button>
+<button data-case="edit" aria-pressed="false">修改事件</button>
+<button data-case="swap" aria-pressed="false">交換順序</button>
+<button data-case="truncate" aria-pressed="false">刪掉最後一筆</button>
+<button data-case="rewrite" aria-pressed="false">整條重算</button>
+</div>
+</header>
+<main>
+<div class="grid">
+<section class="panel">
+<h2>驗證結果</h2>
+<strong id="status" class="status" role="status">—</strong>
+<p id="explanation" aria-live="polite">正在檢查...</p>
+<div class="label">獨立檢查點 · 需要從可信位置保存</div>
+<div class="hash" id="external">—</div>
+<div class="label">紀錄檔內建檢查點 · 不能單獨信任</div>
+<div class="hash" id="embedded">—</div>
+<label class="toggle"><input id="checkIndependent" type="checkbox" checked>使用獨立檢查點檢查完整歷史。取消勾選只驗證當前檔案內部。</label>
+</section>
+<section class="panel">
+<h2>本機資料交換</h2>
+<p class="note">紀錄和檢查點分別匯出。下方也能重新開啟兩份 JSON；檔案只在目前瀏覽器分頁處理，不會傳到伺服器。</p>
+<div class="buttons">
+<button id="saveLog">下載紀錄 JSON</button>
+<button id="saveAnchor">下載檢查點</button>
+</div>
+<div class="buttons">
+<label class="file">匯入紀錄<input id="openLog" type="file" accept=".json,application/json" aria-label="選擇紀錄 JSON"></label>
+<label class="file">匯入獨立檢查點<input id="openAnchor" type="file" accept=".json,application/json" aria-label="選擇檢查點 JSON"></label>
+</div>
+<p id="message" role="alert"></p>
+<div class="label">目前事件數</div>
+<strong id="count" class="status">—</strong>
+</section>
+</div>
+<section class="panel data">
+<h2>事件清單 · 內容均為虛構測試資料</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>順序</th><th>UTC</th><th>操作者</th><th>動作</th><th>事件摘要</th><th>雜湊前 12 碼</th></tr></thead>
+<tbody id="events"></tbody>
+</table></div>
+</section>
+</main>
+<footer>
+SHA-256 能檢查既有內容，但無法證明事件真實發生、操作者身分或資料來源可信。若有人能改寫整份紀錄並重算雜湊，只有另外保存的可信檢查點才能發現差異。本工具不是不可竄改的實際稽核服務，沒有數位簽章、時間戳權威或永久儲存。<a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/labs/proofline">閱讀程式與測試 ↗</a>
+</footer>
+</div><script type="module" src="./app.js"></script></body>
+</html>
