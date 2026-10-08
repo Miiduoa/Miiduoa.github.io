@@ -81,8 +81,8 @@ export function evaluateRestore(input) {
 export function demoPlan(name = "normal") {
   if (!["normal", "regional", "corruption", "tight"].includes(name)) throw new TypeError("unknown scenario");
   const checkpoints = [
-    { id:"cp-0900", region:"east", capturedAt:"2026-10-08T09:00:00.000Z", availableAt:"2026-10-08T09:07:00.000Z", integrity:"verified", transferMinutes:12, restoreMinutes:10, verifyMinutes:8 },
-    { id:"cp-0930", region:"west", capturedAt:"2026-10-08T09:30:00.000Z", availableAt:"2026-10-08T09:40:00.000Z", integrity:"verified", transferMinutes:20, restoreMinutes:16, verifyMinutes:8 },
+    { id:"cp-0900", region:"east", capturedAt:"2026-10-08T09:00:00.000Z", availableAt:"2026-10-08T09:07:00.000Z", integrity:"verified", transferMinutes:3, restoreMinutes:5, verifyMinutes:6 },
+    { id:"cp-0930", region:"west", capturedAt:"2026-10-08T09:30:00.000Z", availableAt:"2026-10-08T09:40:00.000Z", integrity:"verified", transferMinutes:28, restoreMinutes:16, verifyMinutes:8 },
     { id:"cp-0945", region:"east", capturedAt:"2026-10-08T09:45:00.000Z", availableAt:"2026-10-08T09:52:00.000Z", integrity:name === "corruption" ? "corrupt" : "verified", transferMinutes:7, restoreMinutes:10, verifyMinutes:8 },
     { id:"cp-0955", region:"west", capturedAt:"2026-10-08T09:55:00.000Z", availableAt:"2026-10-08T10:06:00.000Z", integrity:"verified", transferMinutes:14, restoreMinutes:12, verifyMinutes:8 }
   ];
