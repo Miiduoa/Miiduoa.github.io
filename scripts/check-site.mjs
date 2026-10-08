@@ -12,18 +12,21 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = [
   "index.html",
   "case-studies/campus-one/index.html",
+  "case-studies/contractscope/index.html",
+  "case-studies/relaylab/index.html",
   "tools/carry/index.html",
   "tools/capacity/index.html",
   "labs/eventlane/index.html",
   "labs/flagrail/index.html",
   "labs/lineageguard/index.html",
   "labs/rampwatch/index.html",
+  "labs/recovergrid/index.html",
   "labs/sessionsentry/index.html",
   "labs/syncbench/index.html",
   "labs/tracepath/index.html",
   "labs/txnscope/index.html"
 ];
-const featuredPages = new Set(["index.html", "case-studies/campus-one/index.html"]);
+const featuredPages = new Set(["index.html", "case-studies/campus-one/index.html", "case-studies/contractscope/index.html", "case-studies/relaylab/index.html"]);
 const siblingPages = new Set([
   "foldpress",
   "relaylab",
