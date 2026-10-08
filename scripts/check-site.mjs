@@ -20,6 +20,8 @@ const pages = [
   "labs/flagrail/index.html",
   "labs/lineageguard/index.html",
   "labs/rampwatch/index.html",
+  "labs/proofline/index.html",
+  "labs/recovergrid/index.html",
   "labs/recovergrid/index.html",
   "labs/sessionsentry/index.html",
   "labs/syncbench/index.html",
