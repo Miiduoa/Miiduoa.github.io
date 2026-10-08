@@ -7,27 +7,10 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { findUnsafeNewTabLinks } from "./html-links.mjs";
+import { discoverPages, validateSitemap } from "./site-inventory.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const pages = [
-  "index.html",
-  "case-studies/campus-one/index.html",
-  "case-studies/contractscope/index.html",
-  "case-studies/relaylab/index.html",
-  "tools/carry/index.html",
-  "tools/capacity/index.html",
-  "labs/eventlane/index.html",
-  "labs/flagrail/index.html",
-  "labs/lineageguard/index.html",
-  "labs/rampwatch/index.html",
-  "labs/proofline/index.html",
-  "labs/recovergrid/index.html",
-  "labs/recovergrid/index.html",
-  "labs/sessionsentry/index.html",
-  "labs/syncbench/index.html",
-  "labs/tracepath/index.html",
-  "labs/txnscope/index.html"
-];
+const pages = discoverPages(root);
 const featuredPages = new Set(["index.html", "case-studies/campus-one/index.html", "case-studies/contractscope/index.html", "case-studies/relaylab/index.html"]);
 const siblingPages = new Set([
   "foldpress",
@@ -146,11 +129,8 @@ if (!existsSync(robotsFile) || !existsSync(sitemapFile)) {
   if (!robots.includes("Sitemap: https://miiduoa.github.io/sitemap.xml")) {
     report("robots.txt", "missing sitemap reference");
   }
-  for (const page of pages) {
-    const url = `https://miiduoa.github.io/${page === "index.html" ? "" : page.replace(/index\.html$/, "")}`;
-    if (!sitemap.includes(`<loc>${url}</loc>`)) {
-      report("sitemap.xml", `missing published page: ${url}`);
-    }
+  for (const issue of validateSitemap(sitemap, pages)) {
+    report("sitemap.xml", issue);
   }
 }
 
