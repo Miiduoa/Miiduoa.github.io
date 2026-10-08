@@ -55,6 +55,13 @@ function validatePage(file) {
     }
   }
 
+  // Catch broken local references before publishing; external links are managed separately.
+  for (const match of html.matchAll(/<a\\b[^>]*target=["']_blank["'][^>]*>/gi)) {
+    if (!/\\brel=["'][^"']*noopener[^"']*["']/i.test(match[0])) {
+      report(file, "new-tab link missing rel=noopener");
+    }
+  }
+
   const allIds = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((match) => match[1]);
   const ids = new Set(allIds);
   if (ids.size !== allIds.length) {
