@@ -98,7 +98,7 @@ function validatePage(file) {
 for (const page of pages) validatePage(page);
 
 if (failures.length) {
-  console.error(`Portfolio verification failed (\${failures.length}):\n${failures.map((issue) => `- ${issue}`).join("\n")}`);
+  console.error(`Portfolio verification failed (${failures.length}):\n${failures.map((issue) => `- ${issue}`).join("\n")}`);
   process.exitCode = 1;
 } else {
   console.log(`Portfolio verification passed: ${pages.length} pages, ${checked} local references checked.`);
