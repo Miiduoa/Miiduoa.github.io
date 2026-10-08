@@ -37,6 +37,7 @@ Core models are standalone ES modules. Run `node --test tools/*/core.test.mjs` t
 | [Eventlane](https://miiduoa.github.io/labs/eventlane/) | at-least-once delivery、idempotency、retry、DLQ |
 | [Syncbench](https://miiduoa.github.io/labs/syncbench/) | offline replicas、logical clock、deterministic merge |
 | [Rampwatch](https://miiduoa.github.io/labs/rampwatch/) | canary guardrails、Wilson interval、advance / hold / rollback |
+| [Proofline](https://miiduoa.github.io/labs/proofline/) | 可驗證稽核紀錄、鏈改寫與獨立錨定 |
 | [Recovergrid](https://miiduoa.github.io/labs/recovergrid/) | recovery-point eligibility、RPO / RTO tradeoffs、region outage |
 
 每個 lab 都把核心邏輯與 UI 分開，並以 Node built-in test 驗證關鍵行為。GitHub Actions 會自動執行 `labs/*/core.test.mjs`。
