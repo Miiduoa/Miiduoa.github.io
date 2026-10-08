@@ -8,7 +8,7 @@
 <title>Contractscope — OpenAPI 相容性案例｜顧晉瑋</title>
 <link rel="canonical" href="https://miiduoa.github.io/case-studies/contractscope/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../editorial.css">
+<link rel="stylesheet" href="../editorial.css?v=20261008">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="Contractscope — OpenAPI 相容性案例">
@@ -31,7 +31,7 @@
 <div class="links"><a href="https://miiduoa.github.io/contractscope/">開啟比較工具 ↗</a><a href="https://github.com/Miiduoa/contractscope">檢視原始碼</a></div>
 <div class="meta"><span>TypeScript · React</span><span>OpenAPI 3.0 / 3.1</span><span>Browser / CLI 共用核心</span></div>
 </header>
-<figure class="figure"><img src="/assets/contractscope.png" alt="Contractscope 的規格輸入、差異結果與受影響的 API 操作畫面" width="1440" height="900"><figcaption>瀏覽器工作台；內建的空間預約 API 為虛構案例，並非客戶系統。</figcaption></figure>
+<figure class="figure"><img src="/assets/contractscope.png?v=20261008" alt="Contractscope 的規格輸入、差異結果與受影響的 API 操作畫面" width="1440" height="900"><figcaption>瀏覽器工作台；內建的空間預約 API 為虛構案例，並非客戶系統。</figcaption></figure>
 <section><div><h2>請求與回應的相容方向</h2></div><div class="body">
 <p>只看 schema diff，很容易把「多了一個欄位」當成絕對相容。但請求與回應的集合方向並不相同：原本有效的請求必須繼續被接受；回應端則不能任意產生舊版合約沒有宣告的值。</p>
 <table><caption>工具內已支援的部分比較規則</caption><thead><tr><th scope="col">變更</th><th scope="col">Request</th><th scope="col">Response</th></tr></thead><tbody>

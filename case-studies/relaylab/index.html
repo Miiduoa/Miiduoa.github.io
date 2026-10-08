@@ -8,7 +8,7 @@
 <title>Relaylab — 訊息投遞與冪等案例｜顧晉瑋</title>
 <link rel="canonical" href="https://miiduoa.github.io/case-studies/relaylab/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../editorial.css">
+<link rel="stylesheet" href="../editorial.css?v=20261008">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="Relaylab — 訊息投遞與冪等案例">
@@ -31,7 +31,7 @@
 <div class="links"><a href="https://miiduoa.github.io/relaylab/">開啟投遞模擬器 ↗</a><a href="https://github.com/Miiduoa/relaylab">檢視原始碼</a></div>
 <div class="meta"><span>TypeScript</span><span>Deterministic simulation</span><span>Browser / CLI 共用核心</span></div>
 </header>
-<figure class="figure"><img src="/assets/relaylab.png" alt="Relaylab worker 時間軸、事件紀錄與訊息狀態的實際畫面" width="1440" height="1010"><figcaption>互動時間軸呈現模擬投遞；這不是對真實 message broker 的壓力測試。</figcaption></figure>
+<figure class="figure"><img src="/assets/relaylab.png?v=20261008" alt="Relaylab worker 時間軸、事件紀錄與訊息狀態的實際畫面" width="1440" height="1010"><figcaption>互動時間軸呈現模擬投遞；這不是對真實 message broker 的壓力測試。</figcaption></figure>
 <section><div><h2>ACK 遺失與重複寫入</h2></div><div class="body">
 <p>第一次處理就已提交效果，但確認訊息遺失。系統無法從沒有 ACK 這件事推論「處理失敗」，因此到期後重送。單靠重試能提高處理成功機會，卻不能保證每筆業務效果只執行一次。</p>
 <table><caption>內建 Lost ACK 情境的固定結果</caption><thead><tr><th scope="col">指標</th><th scope="col">冪等關閉</th><th scope="col">冪等開啟</th></tr></thead><tbody>
