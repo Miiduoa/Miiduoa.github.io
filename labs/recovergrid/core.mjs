@@ -89,7 +89,7 @@ export function demoPlan(name = "normal") {
   return {
     incidentAt:"2026-10-08T10:00:00.000Z", checkpoints,
     rpoTargetMinutes:name === "tight" ? 10 : 35,
-    rtoTargetMinutes:name === "tight" ? 25 : 50,
+    rtoTargetMinutes:name === "tight" ? 25 : name === "regional" ? 40 : 50,
     decisionMinutes:5,
     policy:"freshest",
     unavailableRegions:name === "regional" ? ["east"] : []
