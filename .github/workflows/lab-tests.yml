@@ -34,5 +34,7 @@ jobs:
           node-version: 22
       - name: Test engineering models
         run: node --test labs/*/core.test.mjs tools/*/core.test.mjs
+      - name: Test site link checks
+        run: node --test scripts/*.test.mjs
       - name: Check site navigation and assets
         run: node scripts/check-site.mjs

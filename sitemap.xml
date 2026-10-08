@@ -2,4 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://miiduoa.github.io/</loc></url>
   <url><loc>https://miiduoa.github.io/case-studies/campus-one/</loc></url>
+  <url><loc>https://miiduoa.github.io/tools/carry/</loc></url>
+  <url><loc>https://miiduoa.github.io/tools/capacity/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/eventlane/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/flagrail/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/lineageguard/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/rampwatch/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/sessionsentry/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/syncbench/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/tracepath/</loc></url>
+  <url><loc>https://miiduoa.github.io/labs/txnscope/</loc></url>
 </urlset>

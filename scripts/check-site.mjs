@@ -6,9 +6,24 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { findUnsafeNewTabLinks } from "./html-links.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const pages = ["index.html", "case-studies/campus-one/index.html"];
+const pages = [
+  "index.html",
+  "case-studies/campus-one/index.html",
+  "tools/carry/index.html",
+  "tools/capacity/index.html",
+  "labs/eventlane/index.html",
+  "labs/flagrail/index.html",
+  "labs/lineageguard/index.html",
+  "labs/rampwatch/index.html",
+  "labs/sessionsentry/index.html",
+  "labs/syncbench/index.html",
+  "labs/tracepath/index.html",
+  "labs/txnscope/index.html"
+];
+const featuredPages = new Set(["index.html", "case-studies/campus-one/index.html"]);
 const siblingPages = new Set([
   "foldpress",
   "relaylab",
@@ -36,8 +51,8 @@ function validatePage(file) {
   }
 
   const html = readFileSync(pagePath, "utf8");
-  if (!/<html\b[^>]*lang=["']zh-Hant["']/i.test(html)) {
-    report(file, "missing Traditional Chinese document language");
+  if (!/<html\b[^>]*lang=["'](?:zh-Hant|en)["']/i.test(html)) {
+    report(file, "missing supported document language");
   }
   if ((html.match(/<h1\b/gi) ?? []).length !== 1) {
     report(file, "expected exactly one h1");
@@ -56,10 +71,8 @@ function validatePage(file) {
   }
 
   // Catch broken local references before publishing; external links are managed separately.
-  for (const match of html.matchAll(/<a\\b[^>]*target=["']_blank["'][^>]*>/gi)) {
-    if (!/\\brel=["'][^"']*noopener[^"']*["']/i.test(match[0])) {
-      report(file, "new-tab link missing rel=noopener");
-    }
+  for (const tag of findUnsafeNewTabLinks(html)) {
+    report(file, "new-tab link missing rel=noopener");
   }
 
   const allIds = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((match) => match[1]);
@@ -72,9 +85,11 @@ function validatePage(file) {
   if (!html.includes(`<link rel="canonical" href="${canonical}">`)) {
     report(file, "missing or incorrect canonical URL");
   }
-  for (const property of ["og:title", "og:description", "og:image", "og:image:alt", "og:url"]) {
-    if (!html.includes(`property="${property}"`)) {
-      report(file, `missing social preview metadata: ${property}`);
+  if (featuredPages.has(file)) {
+    for (const property of ["og:title", "og:description", "og:image", "og:image:alt", "og:url"]) {
+      if (!html.includes(`property="${property}"`)) {
+        report(file, `missing social preview metadata: ${property}`);
+      }
     }
   }
 
