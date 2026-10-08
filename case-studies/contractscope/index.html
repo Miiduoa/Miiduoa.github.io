@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f0e8">
+<meta name="description" content="Contractscope API 相容性案例：比較請求與回應的方向性規則、涵蓋警告、CLI 退出碼與實際測試。">
+<title>Contractscope — OpenAPI 相容性案例｜顧晉瑋</title>
+<link rel="canonical" href="https://miiduoa.github.io/case-studies/contractscope/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../editorial.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="Contractscope — OpenAPI 相容性案例">
+<meta property="og:description" content="相同欄位改動在請求與回應可能有相反風險。從規則、反例到 CLI 測試檢查這個工具。">
+<meta property="og:url" content="https://miiduoa.github.io/case-studies/contractscope/">
+<meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/contractscope/main/docs/screenshot.png">
+<meta property="og:image:alt" content="Contractscope 的合約比較工作台實際畫面">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div class="wrap">
+<nav aria-label="主選單"><a class="brand" href="/">顧晉瑋 / Miiduoa</a><div class="nav-links"><a href="/#work">精選作品</a><a href="https://github.com/Miiduoa/contractscope">GitHub ↗</a></div></nav>
+<main id="main">
+<header class="hero">
+<div class="eyebrow">CASE 02 / API CONTRACTS</div>
+<h1>Contractscope</h1>
+<p class="statement">同一個 API 欄位改動，為什麼請求端可能安全，回應端卻可能壞掉？</p>
+<p class="detail">這個工具比較兩份 OpenAPI 規格，列出可能破壞既有呼叫端的結構性變更。更重要的是：對尚未支援的規則明確標示分析未完整，而不是回報「沒有問題」。</p>
+<div class="links"><a href="https://miiduoa.github.io/contractscope/">開啟比較工具 ↗</a><a href="https://github.com/Miiduoa/contractscope">檢視原始碼</a></div>
+<div class="meta"><span>TypeScript · React</span><span>OpenAPI 3.0 / 3.1</span><span>Browser / CLI 共用核心</span></div>
+</header>
+<figure class="figure"><img src="/assets/contractscope.png" alt="Contractscope 的規格輸入、差異結果與受影響的 API 操作畫面" width="1440" height="1320"><figcaption>瀏覽器工作台；內建的空間預約 API 為虛構案例，並非客戶系統。</figcaption></figure>
+<section><div><span class="kicker">01 — PROBLEM</span><h2>差異，不等於風險。</h2><p class="subtitle">Directional compatibility</p></div><div class="body">
+<p>只看 schema diff，很容易把「多了一個欄位」當成絕對相容。但請求與回應的集合方向並不相同：原本有效的請求必須繼續被接受；回應端則不能任意產生舊版合約沒有宣告的值。</p>
+<table><caption>工具內已支援的部分比較規則</caption><thead><tr><th scope="col">變更</th><th scope="col">Request</th><th scope="col">Response</th></tr></thead><tbody>
+<tr><td>擴充 enum 值</td><td>相容</td><td>破壞性變更</td></tr>
+<tr><td>既有欄位改為必填</td><td>破壞性變更</td><td>相容</td></tr>
+<tr><td>移除媒體類型</td><td>破壞性變更</td><td>破壞性變更</td></tr>
+</tbody></table>
+<p>這裡的「相容」僅指已支援的結構規則；不代表實際伺服器行為、SDK 或商業邏輯也相容。</p>
+</div></section>
+<section><div><span class="kicker">02 — IMPLEMENTATION</span><h2>一套邏輯，兩種入口。</h2><p class="subtitle">Browser and Node CLI</p></div><div class="body">
+<div class="steps">
+<div><span class="kicker">01</span><div><b>輸入限制</b><p>讀取 JSON／YAML，拒絕重複鍵、過深結構與過量展開；每份輸入限制 512 KiB。</p></div></div>
+<div><span class="kicker">02</span><div><b>有效合約正規化</b><p>解析 path、method、繼承參數、本地 JSON Pointer 參照與 operation 中實際用到的 schema。</p></div></div>
+<div><span class="kicker">03</span><div><b>按資料方向比較</b><p>對 required、enum、type、封閉物件與媒體類型套用對應規則。</p></div></div>
+<div><span class="kicker">04</span><div><b>固定輸出與錯誤處理</b><p>UI 的篩選、匯出和 CLI 退出碼，都來自同一份比較結果。</p></div></div>
+</div>
+<pre><code>npm ci
+npm run diff -- samples/baseline.json samples/candidate.json
+npm test
+npm run build</code></pre>
+<p>更改任一份規格時，前一次結果會清除。非同步讀檔使用獨立的輸入序號，避免較舊的讀檔覆蓋剛貼上的新資料；合約內容只在本機瀏覽器記憶體中處理。</p>
+</div></section>
+<section><div><span class="kicker">03 — EVIDENCE</span><h2>不知道的，不能算通過。</h2><p class="subtitle">Coverage versus severity</p></div><div class="body">
+<p>結果分為兩個面向：<code>status</code> 是目前辨識到的相容性變更，<code>coverage</code> 是是否碰到工具不支援的語意。即使已找到 breaking，只要涵蓋不完整，就必須保留警告。</p>
+<table><caption>CLI 退出碼</caption><thead><tr><th scope="col">Code</th><th scope="col">意義</th></tr></thead><tbody>
+<tr><td><code>0</code></td><td>分析完整，且未觸發破壞性變更阻擋條件</td></tr>
+<tr><td><code>1</code></td><td>分析完整，且 <code>--fail-on-breaking</code> 偵測到 breaking</td></tr>
+<tr><td><code>2</code></td><td>涵蓋不完整，即使也找到 breaking 仍回傳非零</td></tr>
+<tr><td><code>3</code></td><td>輸入、檔案或命令參數無效</td></tr>
+</tbody></table>
+<p>測試有成對檢查請求／回應方向、本地參照循環、節點預算、重複鍵和真實 Node 子程序的退出碼。設計紀錄亦保留了曾將「回應媒體格式刪除」誤判為相容、後續修正的案例。</p>
+<div class="refs">
+<a href="https://github.com/Miiduoa/contractscope/blob/main/src/core/index.ts"><b>比較引擎</b><small>解析與比較規則</small></a>
+<a href="https://github.com/Miiduoa/contractscope/blob/main/tests/core.test.ts"><b>核心測試</b><small>成對規則、解析邊界</small></a>
+<a href="https://github.com/Miiduoa/contractscope/blob/main/tests/cli.test.ts"><b>CLI 測試</b><small>真實執行與失敗狀態</small></a>
+<a href="https://github.com/Miiduoa/contractscope/blob/main/docs/design.zh-TW.md"><b>設計紀錄</b><small>驗證、錯誤修正、限制</small></a>
+</div>
+</div></section>
+<section><div><span class="kicker">04 — BOUNDARY</span><h2>保守，但不假裝萬能。</h2><p class="subtitle">What this does not prove</p></div><div class="body">
+<p>開放物件、複合 schema、範圍與格式、security、外部參照、未知 dialect 等，都可能造成涵蓋警告。這不是完整 OpenAPI validator，也不執行真實伺服器或產生 SDK。</p>
+<p class="note">建議審查順序：先用內建範例產生報告，查看 <a href="https://github.com/Miiduoa/contractscope/blob/main/docs/rules.md">規則與反例</a>，最後對照 CLI 測試。完整分析不等於正式部署絕對安全。</p>
+</div></section>
+<div class="next"><span class="kicker">NEXT CASE</span><a href="/case-studies/relaylab/">Relaylab — 投遞與冪等 ↗</a></div>
+</main><footer><span>© 2026 顧晉瑋 / Miiduoa</span><a href="/">返回作品集</a></footer>
+</div>
+</body>
+</html>
