@@ -103,7 +103,13 @@ function validatePage(file) {
       continue;
     }
 
-    const pathname = decodeURIComponent(url.pathname);
+    let pathname;
+    try {
+      pathname = decodeURIComponent(url.pathname);
+    } catch {
+      report(file, `malformed URL encoding: ${target}`);
+      continue;
+    }
     const destination = resolve(root, `.${pathname}`);
     if (!destination.startsWith(root + "/") && destination !== root) {
       report(file, `link escapes repository: ${target}`);
