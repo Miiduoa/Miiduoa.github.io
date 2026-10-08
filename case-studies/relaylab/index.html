@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f0e8">
+<meta name="description" content="Relaylab 訊息佇列案例：以可重播事件時間軸檢查 ACK 遺失、重複投遞、冪等寫入與租約競態。">
+<title>Relaylab — 訊息投遞與冪等案例｜顧晉瑋</title>
+<link rel="canonical" href="https://miiduoa.github.io/case-studies/relaylab/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../editorial.css">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="Relaylab — 訊息投遞與冪等案例">
+<meta property="og:description" content="成功寫入但 ACK 遺失時，如何避免重試造成重複副作用？">
+<meta property="og:url" content="https://miiduoa.github.io/case-studies/relaylab/">
+<meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/relaylab/main/docs/screenshot.png">
+<meta property="og:image:alt" content="Relaylab 投遞時間軸與訊息狀態實際畫面">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div class="wrap">
+<nav aria-label="主選單"><a class="brand" href="/">顧晉瑋 / Miiduoa</a><div class="nav-links"><a href="/#work">精選作品</a><a href="https://github.com/Miiduoa/relaylab">GitHub ↗</a></div></nav>
+<main id="main">
+<header class="hero">
+<div class="eyebrow">CASE 03 / RELIABILITY ENGINEERING</div>
+<h1>Relaylab</h1>
+<p class="statement">處理成功的訊息，為什麼還會再送一次？</p>
+<p class="detail">訊息副作用成功提交，但 ACK 在途中遺失。投遞租約到期後，另一個 worker 再次取到同一筆訊息。Relaylab 讓這種不容易肉眼觀察的競態，在固定種子的離散事件時間軸上重播。</p>
+<div class="links"><a href="https://miiduoa.github.io/relaylab/">開啟投遞模擬器 ↗</a><a href="https://github.com/Miiduoa/relaylab">檢視原始碼</a></div>
+<div class="meta"><span>TypeScript</span><span>Deterministic simulation</span><span>Browser / CLI 共用核心</span></div>
+</header>
+<figure class="figure"><img src="/assets/relaylab.png" alt="Relaylab worker 時間軸、事件紀錄與訊息狀態的實際畫面" width="1440" height="1450"><figcaption>互動時間軸呈現模擬投遞；這不是對真實 message broker 的壓力測試。</figcaption></figure>
+<section><div><span class="kicker">01 — FAILURE MODE</span><h2>寫入完成，不等於 ACK 完成。</h2><p class="subtitle">At-least-once delivery</p></div><div class="body">
+<p>第一次處理就已提交效果，但確認訊息遺失。系統無法從沒有 ACK 這件事推論「處理失敗」，因此到期後重送。單靠重試能提高處理成功機會，卻不能保證每筆業務效果只執行一次。</p>
+<table><caption>內建 Lost ACK 情境的固定結果</caption><thead><tr><th scope="col">指標</th><th scope="col">冪等關閉</th><th scope="col">冪等開啟</th></tr></thead><tbody>
+<tr><td>Deliveries</td><td>13</td><td>13</td></tr>
+<tr><td>Committed effects</td><td>13</td><td>12</td></tr>
+<tr><td>Duplicate effects</td><td>1</td><td>0</td></tr>
+</tbody></table>
+<p>重複投遞沒有消失；被抑制的是第二次寫入。這組數字由程式的範例情境與固定結果測試支持，不代表實際營運統計。</p>
+</div></section>
+<section><div><span class="kicker">02 — ENGINE</span><h2>同一個時鐘，所有狀態都能追溯。</h2><p class="subtitle">Events, leases and workers</p></div><div class="body">
+<div class="steps">
+<div><span class="kicker">01</span><div><b>Produce / Ready</b><p>新訊息依到達順序進入佇列，等待可用 worker。</p></div></div>
+<div><span class="kicker">02</span><div><b>Dispatch / Lease</b><p>每次投遞建立獨立 receipt ID，並登記 visibility timeout。</p></div></div>
+<div><span class="kicker">03</span><div><b>Write / ACK</b><p>成功的 worker 先提交效果，然後才可能遇到 ACK 遺失；只有有效 receipt 能確認完成。</p></div></div>
+<div><span class="kicker">04</span><div><b>Expire / Retry</b><p>租約過期不代表舊 worker 停止執行；重試和舊工作可能同時進行。</p></div></div>
+</div>
+<p>排程器以虛擬時間排序事件，同時刻則依插入順序處理。從同一筆 seed 與 scenario 重新運行狀態機，可回到任何一步觀察結果，不依賴預先錄製好的影格。</p>
+<pre><code>npm ci
+npm run simulate -- --preset lost-ack --out lost-ack.json
+npm run simulate -- --preset lost-ack --idempotent --out idempotent.json
+npm test</code></pre>
+<p>需要 Node.js 24 或更新版本。CLI 拒絕覆寫已存在的輸出檔案；匯出的情境與報告有不同格式，避免把快照誤當成可重播的輸入。</p>
+</div></section>
+<section><div><span class="kicker">03 — PROOF</span><h2>競態條件本身就是測試案例。</h2><p class="subtitle">Conservation and regression tests</p></div><div class="body">
+<p>引擎在每次轉換檢查產生數守恆、時間不倒退、重試次數限制、worker 是否只持有一筆工作，以及啟用冪等時「每筆訊息最多一筆效果」的規則。</p>
+<p>測試還涵蓋同時刻的完成與過期、已失效 receipt 的 ACK、不允許舊失敗覆蓋新租約、worker crash/recovery，及 100 組不同種子與參數的驗證。</p>
+<div class="refs">
+<a href="https://github.com/Miiduoa/relaylab/blob/main/src/core/engine.ts"><b>事件與租約引擎</b><small>狀態機、效果寫入、重播</small></a>
+<a href="https://github.com/Miiduoa/relaylab/blob/main/tests/engine.test.ts"><b>競態回歸測試</b><small>固定輸出與不變量檢查</small></a>
+<a href="https://github.com/Miiduoa/relaylab/blob/main/docs/scenarios.md"><b>情境與報告格式</b><small>輸入限制、部分執行結果</small></a>
+<a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md"><b>模型設計紀錄</b><small>事件規則、已知限制</small></a>
+</div>
+</div></section>
+<section><div><span class="kicker">04 — BOUNDARY</span><h2>Dead-letter，不會倒帶副作用。</h2><p class="subtitle">Not a broker emulator</p></div><div class="body">
+<p>模型採單一 queue、原子冪等鍵集合、不過期的 idempotency record、虛擬時間及預先定義的失敗位置。沒有實際網路、資料庫交易、broker 複寫、時鐘飄移或真實 I/O，不能用來聲稱模擬了 SQS、Kafka 或 RabbitMQ 的完整行為。</p>
+<p>即使訊息因重試耗盡進入 dead state，舊 worker 仍可能在租約失效後完成副作用。「已進 DLQ」不等於「這筆操作從未發生」。</p>
+<p class="note">先玩 Lost ACK，比較兩種冪等模式，再切換短租約情境。最後把所見對照 <a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md">模型假設與測試</a>，而不是只看視覺動畫。</p>
+</div></section>
+<div class="next"><span class="kicker">NEXT CASE</span><a href="/case-studies/campus-one/">Campus One — 跨端校園系統 ↗</a></div>
+</main><footer><span>© 2026 顧晉瑋 / Miiduoa</span><a href="/">返回作品集</a></footer>
+</div>
+</body>
+</html>
