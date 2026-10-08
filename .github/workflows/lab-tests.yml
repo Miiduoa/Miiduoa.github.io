@@ -1,23 +1,34 @@
-name: project-model-tests
+name: portfolio-verification
 
 on:
   push:
     paths:
+      - "index.html"
+      - "case-studies/**"
+      - "assets/**"
       - "labs/**"
       - "tools/**"
+      - "scripts/**"
       - ".github/workflows/lab-tests.yml"
   pull_request:
     paths:
+      - "index.html"
+      - "case-studies/**"
+      - "assets/**"
       - "labs/**"
       - "tools/**"
+      - "scripts/**"
       - ".github/workflows/lab-tests.yml"
 
 jobs:
-  test:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: node --test labs/*/core.test.mjs tools/*/core.test.mjs
+      - name: Test engineering models
+        run: node --test labs/*/core.test.mjs tools/*/core.test.mjs
+      - name: Check site navigation and assets
+        run: node scripts/check-site.mjs
