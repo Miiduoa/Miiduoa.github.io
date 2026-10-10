@@ -1,31 +1,23 @@
 #!/usr/bin/env node
 // Verify the pages maintained in this repository before publishing.
-// Project demos hosted by their own GitHub Pages repositories are checked
-// in those projects' deployment pipelines, not treated as local files here.
+// Independent project deployments and external URLs require separate live checks.
 
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { findUnsafeNewTabLinks } from "./html-links.mjs";
 import { discoverPages, validateSitemap } from "./site-inventory.mjs";
+import { checkLocalReference } from "./local-references.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pages = discoverPages(root);
 const featuredPages = new Set(["index.html", "case-studies/campus-one/index.html", "case-studies/contractscope/index.html", "case-studies/relaylab/index.html"]);
 const siblingPages = new Set([
-  "foldpress",
-  "relaylab",
-  "contractscope",
-  "motionbench",
-  "switchback",
-  "roomtone",
-  "stillroom",
-  "cuework",
-  "tracefold",
-  "patchday",
+  "foldpress", "relaylab", "contractscope", "motionbench", "switchback",
+  "roomtone", "stillroom", "cuework", "tracefold", "patchday",
 ]);
 const failures = [];
-let checked = 0;
+const counts = { local: 0, external: 0, sibling: 0, error: 0 };
 
 function report(file, issue) {
   failures.push(`${file}: ${issue}`);
@@ -37,89 +29,32 @@ function validatePage(file) {
     report(file, "page not found");
     return;
   }
-
   const html = readFileSync(pagePath, "utf8");
-  if (!/<html\b[^>]*lang=["'](?:zh-Hant|en)["']/i.test(html)) {
-    report(file, "missing supported document language");
-  }
-  if ((html.match(/<h1\b/gi) ?? []).length !== 1) {
-    report(file, "expected exactly one h1");
-  }
-  if (!/<meta\s+name=["']description["']\s+content=["'][^"']+["']/i.test(html)) {
-    report(file, "missing meta description");
-  }
-  if (!/<title>[^<]+<\/title>/i.test(html)) {
-    report(file, "missing document title");
-  }
+  if (!/<html\b[^>]*lang=["'](?:zh-Hant|en)["']/i.test(html)) report(file, "missing supported document language");
+  if ((html.match(/<h1\b/gi) ?? []).length !== 1) report(file, "expected exactly one h1");
+  if (!/<meta\s+name=["']description["']\s+content=["'][^"']+["']/i.test(html)) report(file, "missing meta description");
+  if (!/<title>[^<]+<\/title>/i.test(html)) report(file, "missing document title");
 
   for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
-    if (!/\balt=["'][^"']+["']/i.test(match[0])) {
-      report(file, "image without descriptive alt text");
-    }
+    if (!/\balt=["'][^"']+["']/i.test(match[0])) report(file, "image without descriptive alt text");
   }
-
-  // Catch broken local references before publishing; external links are managed separately.
-  for (const tag of findUnsafeNewTabLinks(html)) {
-    report(file, "new-tab link missing rel=noopener");
-  }
+  for (const tag of findUnsafeNewTabLinks(html)) report(file, "new-tab link missing rel=noopener");
 
   const allIds = [...html.matchAll(/\bid=["']([^"']+)["']/gi)].map((match) => match[1]);
-  const ids = new Set(allIds);
-  if (ids.size !== allIds.length) {
-    report(file, "duplicate id attributes");
-  }
+  if (new Set(allIds).size !== allIds.length) report(file, "duplicate id attributes");
 
   const canonical = `https://miiduoa.github.io/${file === "index.html" ? "" : file.replace(/index\.html$/, "")}`;
-  if (!html.includes(`<link rel="canonical" href="${canonical}">`)) {
-    report(file, "missing or incorrect canonical URL");
-  }
+  if (!html.includes(`<link rel="canonical" href="${canonical}">`)) report(file, "missing or incorrect canonical URL");
   if (featuredPages.has(file)) {
     for (const property of ["og:title", "og:description", "og:image", "og:image:alt", "og:url"]) {
-      if (!html.includes(`property="${property}"`)) {
-        report(file, `missing social preview metadata: ${property}`);
-      }
+      if (!html.includes(`property="${property}"`)) report(file, `missing social preview metadata: ${property}`);
     }
   }
 
-  for (const [, attribute, target] of html.matchAll(/\b(href|src)=["']([^"']+)["']/gi)) {
-    if (/^(https?:|mailto:|tel:|data:)/i.test(target)) continue;
-    if (target === "#" || target === "") {
-      report(file, `${attribute} has an empty destination`);
-      continue;
-    }
-
-    if (target.startsWith("#")) {
-      if (!ids.has(decodeURIComponent(target.slice(1)))) {
-        report(file, `missing anchor ${target}`);
-      }
-      checked++;
-      continue;
-    }
-
-    const url = new URL(target, `https://miiduoa.github.io/${file}`);
-    const parts = url.pathname.split("/").filter(Boolean);
-    // These top-level paths belong to independent, deployed repositories.
-    if (parts.length === 1 && siblingPages.has(parts[0]) && url.pathname.endsWith("/")) {
-      continue;
-    }
-
-    let pathname;
-    try {
-      pathname = decodeURIComponent(url.pathname);
-    } catch {
-      report(file, `malformed URL encoding: ${target}`);
-      continue;
-    }
-    const destination = resolve(root, `.${pathname}`);
-    if (!destination.startsWith(root + "/") && destination !== root) {
-      report(file, `link escapes repository: ${target}`);
-      continue;
-    }
-    const destinationFile = pathname.endsWith("/") ? join(destination, "index.html") : destination;
-    if (!existsSync(destinationFile)) {
-      report(file, `missing local ${attribute} target: ${target}`);
-    }
-    checked++;
+  for (const [, attribute, target] of html.matchAll(/\b(href|src)=["']([^"']*)["']/gi)) {
+    const result = checkLocalReference(target, { root, page: file, siblingPages, attribute });
+    counts[result.kind]++;
+    if (result.kind === "error") report(file, result.issue);
   }
 }
 
@@ -132,17 +67,14 @@ if (!existsSync(robotsFile) || !existsSync(sitemapFile)) {
 } else {
   const robots = readFileSync(robotsFile, "utf8");
   const sitemap = readFileSync(sitemapFile, "utf8");
-  if (!robots.includes("Sitemap: https://miiduoa.github.io/sitemap.xml")) {
-    report("robots.txt", "missing sitemap reference");
-  }
-  for (const issue of validateSitemap(sitemap, pages)) {
-    report("sitemap.xml", issue);
-  }
+  if (!robots.includes("Sitemap: https://miiduoa.github.io/sitemap.xml")) report("robots.txt", "missing sitemap reference");
+  for (const issue of validateSitemap(sitemap, pages)) report("sitemap.xml", issue);
 }
 
+console.log(`References: ${counts.local} local checked; ${counts.sibling} independent project links and ${counts.external} external references not live-checked.`);
 if (failures.length) {
   console.error(`Portfolio verification failed (${failures.length}):\n${failures.map((issue) => `- ${issue}`).join("\n")}`);
   process.exitCode = 1;
 } else {
-  console.log(`Portfolio verification passed: ${pages.length} pages, ${checked} local references checked.`);
+  console.log(`Portfolio verification passed: ${pages.length} pages, ${counts.local} local references checked.`);
 }
