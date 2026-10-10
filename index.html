@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f3f0e8">
-  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 跨端旗艦系統，以及 PDF 拼版、佇列模擬、Web 工具與資料分析。">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 校園應用、OpenAPI 規格比較與零售資料分析，包含畫面、程式與測試紀錄。">
   <title>顧晉瑋 — 作品集</title>
   <link rel="canonical" href="https://miiduoa.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:site_name" content="Miiduoa">
   <meta property="og:title" content="顧晉瑋 — 軟體作品集">
-  <meta property="og:description" content="Campus One 跨端系統、API 合約比較、訊息投遞模擬與資料決策工具。瀏覽實作、案例與測試。">
+  <meta property="og:description" content="Campus One 校園應用、API 規格比較、訊息投遞模擬與零售分析。查看實作、畫面與測試。">
   <meta property="og:url" content="https://miiduoa.github.io/">
   <meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/graduation/main/apps/mobile/ai_first_tabs.png">
   <meta property="og:image:alt" content="Campus One 校園應用程式行動端介面">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="顧晉瑋 — 軟體作品集">
-  <meta name="twitter:description" content="跨端產品、系統可靠性與資料工程的實作紀錄。">
+  <meta name="twitter:description" content="校園應用、API 規格比較與零售資料分析的實作紀錄。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"顧晉瑋","url":"https://miiduoa.github.io/","affiliation":{"@type":"CollegeOrUniversity","name":"Providence University"},"sameAs":["https://github.com/Miiduoa","https://www.kaggle.com/kuchinwei"]}
   </script>
-  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/home.css?v=20261010">
 </head>
 <body>
 <a class="skip" href="#work">跳到專案</a>
@@ -35,33 +35,34 @@
     <header class="intro">
       <h1>顧晉瑋</h1>
       <p>靜宜大學資訊管理學系。</p>
-      <p>這裡整理校園應用、資料分析，以及一些可以直接使用的小工具。</p>
+      <p>目前主要維護 Campus One，處理校園服務在行動端與 Web 之間的資料、登入和角色權限。這裡也收錄 API 規格比較、零售資料分析與幾個檔案處理工具。</p>
+      <p class="intro-links"><a href="/case-studies/campus-one/">先看 Campus One 的畫面與實作</a><a href="#tools">直接使用小工具</a></p>
     </header>
     <section id="work" aria-labelledby="work-title">
       <div class="section-title"><h2 id="work-title">主要專案</h2><p>程式、操作畫面與實作紀錄</p></div>
-      <article class="project">
+      <article class="project" id="campus-one">
         <div class="project-copy">
           <p class="project-type">校園應用程式</p>
           <h3>Campus One</h3>
           <p>把課表、訊息、地圖和校園服務接在同一個 App 裡，同時提供 Web 介面。</p>
           <ul><li>行動端與 Web 共用資料型別和角色規則。</li><li>權限檢查涵蓋頁面導向、後端與 Firebase rules。</li></ul>
           <p class="stack">Expo / React Native · Next.js · Firebase · TypeScript</p>
-          <div class="project-links"><a href="/case-studies/campus-one/">畫面與實作紀錄</a><a href="https://github.com/Miiduoa/graduation">原始碼</a></div>
+          <div class="project-links"><a href="/case-studies/campus-one/">畫面與實作紀錄</a><a href="https://github.com/Miiduoa/graduation">原始碼</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/REVIEW_IN_2_MINUTES.md">程式導讀</a><a href="https://github.com/Miiduoa/graduation/actions">測試狀態</a></div>
         </div>
         <figure class="project-media phone"><a href="/case-studies/campus-one/" aria-label="查看 Campus One 介面與實作"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/main/apps/mobile/ai_first_tabs.png" alt="Campus One 行動端課程與服務入口" fetchpriority="high"></a><figcaption>行動端開發畫面。部署與測試進度列在專案文件中。</figcaption></figure>
       </article>
-      <article class="project">
+      <article class="project" id="contractscope">
         <div class="project-copy">
           <p class="project-type">開發工具</p>
           <h3>Contractscope</h3>
           <p>比較兩版 OpenAPI 規格，列出刪除的操作、必填參數與型別變更。</p>
           <ul><li>逐項查看受影響的 API、前後值與判斷規則。</li><li>瀏覽器與 CLI 共用比較核心，可匯出 JSON 報告。</li></ul>
           <p class="stack">TypeScript · OpenAPI · CLI</p>
-          <div class="project-links"><a href="/contractscope/">開啟工具</a><a href="/case-studies/contractscope/">實作紀錄</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a><a href="https://github.com/Miiduoa/contractscope/blob/main/docs/design.zh-TW.md">規則範圍</a></div>
+          <div class="project-links"><a href="/contractscope/">開啟工具</a><a href="/case-studies/contractscope/">實作紀錄</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a><a href="https://github.com/Miiduoa/contractscope/blob/main/docs/rules.md">規則範圍</a></div>
         </div>
         <figure class="project-media contract"><a href="/contractscope/" aria-label="開啟 OpenAPI 比較工具"><img src="/assets/contractscope.png?v=20261008" alt="OpenAPI 比較結果，包含變更項目與前後參數" width="1440" height="900" loading="lazy"></a><figcaption>範例規格的比較結果；列出目前規則能辨識的變更。</figcaption></figure>
       </article>
-      <article class="project">
+      <article class="project" id="retail-ops">
         <div class="project-copy">
           <p class="project-type">資料分析原型</p>
           <h3>Retail Ops DSS</h3>
@@ -113,7 +114,7 @@
     </ul></details>
     <section id="about" class="contact" aria-labelledby="contact-title"><h2 id="contact-title">聯絡</h2><p><a href="mailto:demohan513@gmail.com">demohan513@gmail.com</a> · <a href="https://www.kaggle.com/kuchinwei">Kaggle</a></p></section>
   </main>
-  <footer><span>© 2026 顧晉瑋</span><a href="https://github.com/Miiduoa">GitHub</a></footer>
+  <footer><span>© 2026 顧晉瑋</span><a href="https://github.com/Miiduoa/Miiduoa.github.io/actions/workflows/lab-tests.yml">網站檢查</a><a href="https://github.com/Miiduoa">GitHub</a></footer>
 </div>
 </body>
 </html>

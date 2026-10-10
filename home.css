@@ -50,7 +50,7 @@ h2 { font-size: 19px; font-weight: 600; margin: 0; }
 .tool-list li { padding: 17px 0; border-bottom: 1px solid var(--line); min-width: 0; }
 .tool-list strong { font-size: 15px; font-weight: 600; }
 .tool-list p { font-size: 14px; color: var(--secondary); margin: 5px 0 6px; }
-.tool-links { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 12px; }
+.tool-links { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 13px; }
 .experiments { border: 1px solid var(--line); padding: 0 22px; margin: 36px 0 0; }
 .experiments summary { cursor: pointer; padding: 17px 0; font-size: 15px; font-weight: 600; }
 .experiments > p { color: var(--secondary); font-size: 14px; margin: 0 0 20px; }
@@ -67,6 +67,10 @@ h2 { font-size: 19px; font-weight: 600; margin: 0; }
 .contact h2 { margin-bottom: 10px; }
 .contact p { margin: 0; font-size: 14px; color: var(--secondary); }
 footer { padding: 20px 0 28px; border-top: 1px solid var(--line); color: var(--secondary); font-size: 12px; display: flex; gap: 20px; justify-content: space-between; }
+.intro .intro-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 18px; font-size: 14px; }
+.intro-links a, .site-nav a, .project-links a, .tool-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.project-copy { min-width: 0; }
+.project-copy, .contact, .study-list { overflow-wrap: anywhere; }
 @media (max-width: 740px) {
   .shell { padding: 0 22px; }
   .site-nav { min-height: 65px; }
@@ -82,4 +86,18 @@ footer { padding: 20px 0 28px; border-top: 1px solid var(--line); color: var(--s
   .study-list { grid-template-columns: 1fr; }
   .experiments { padding: 0 16px; }
   footer { flex-wrap: wrap; }
+}
+@media (max-width: 380px) {
+  .site-nav { flex-wrap: wrap; gap: 0 16px; padding: 8px 0; }
+  .nav-links { width: 100%; justify-content: space-between; gap: 8px; }
+}
+@media print {
+  body { font-size: 11pt; }
+  .shell { max-width: none; padding: 0; }
+  .site-nav, .skip, .intro-links, footer { display: none !important; }
+  .intro { padding: 0 0 20px; }
+  .project { break-inside: avoid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px 0; }
+  .project-media img, .project-media.phone img { height: 180px; object-fit: contain; }
+  .project-links a, .tool-links a { min-height: 0; }
+  a { color: inherit; }
 }
