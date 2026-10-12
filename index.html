@@ -3,130 +3,66 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 校園應用、OpenAPI 規格比較、訊息投遞模擬與零售資料分析，包含畫面、程式與測試紀錄。">
-  <title>顧晉瑋 — 作品集</title>
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 校園應用、Contractscope API 比較、Relaylab 訊息投遞模擬，以及日常使用的瀏覽器工具。">
+  <title>顧晉瑋 Miiduoa — 軟體作品集</title>
   <link rel="canonical" href="https://miiduoa.github.io/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
-  <meta property="og:site_name" content="Miiduoa">
-  <meta property="og:title" content="顧晉瑋 — 軟體作品集">
-  <meta property="og:description" content="Campus One 校園應用、API 規格比較、訊息投遞模擬與零售分析。查看實作、畫面與測試。">
+  <meta property="og:title" content="顧晉瑋 Miiduoa — 軟體作品集">
+  <meta property="og:description" content="校園應用、開發工具與資料實驗。看介面，試工具，讀程式。">
+  <meta property="og:image" content="https://miiduoa.github.io/assets/contractscope.png">
+  <meta property="og:image:alt" content="Contractscope 的 API 規格比較工作台">
   <meta property="og:url" content="https://miiduoa.github.io/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png">
-  <meta property="og:image:alt" content="Campus One 開發版本：學生端的校園服務入口">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="顧晉瑋 — 軟體作品集">
-  <meta name="twitter:description" content="校園應用、API 規格比較、訊息投遞模擬與零售資料分析的實作紀錄。">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"顧晉瑋","url":"https://miiduoa.github.io/","affiliation":{"@type":"CollegeOrUniversity","name":"Providence University"},"sameAs":["https://github.com/Miiduoa"]}
-  </script>
-  <link rel="stylesheet" href="/home.css?v=20261012">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/home.css?v=20261012b">
+  <script src="/home.js?v=20261012b" defer></script>
 </head>
 <body>
-<a class="skip" href="#work">跳到專案</a>
-<div class="shell">
-  <nav class="site-nav" aria-label="主要導覽">
-    <a class="brand" href="#top">Miiduoa</a>
-    <div class="nav-links"><a href="#work">專案</a><a href="#tools">工具</a><a href="#about">聯絡</a><a href="https://github.com/Miiduoa">GitHub</a></div>
-  </nav>
-  <main id="top">
-    <header class="intro">
-      <h1>顧晉瑋</h1>
-      <p>靜宜大學資訊管理學系。</p>
-      <p>目前主要維護 Campus One，處理校園服務在行動端與 Web 之間的資料、登入和角色權限。這裡也收錄 API 規格比較、訊息投遞模擬、零售資料分析與幾個檔案處理工具。</p>
-      <p class="intro-links"><a href="/case-studies/campus-one/">先看 Campus One 的畫面與實作</a><a href="#tools">直接使用小工具</a><a href="https://github.com/Miiduoa/Miiduoa/blob/main/REPOSITORY_GUIDE.md">按主題閱讀程式</a></p>
-    </header>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="shell" id="top">
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Miiduoa 首頁">m<span class="wordmark-dot">.</span></a>
+    <span class="header-note">軟體作品與開發紀錄</span>
+    <nav aria-label="主要導覽"><a href="#work">作品</a><a href="#tools">工具</a><a href="#about">關於</a><a href="https://github.com/Miiduoa" class="github-link">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="intro" aria-labelledby="name">
+      <div class="intro-name"><p class="eyebrow">INFORMATION MANAGEMENT · TAIWAN</p><h1 id="name">顧晉瑋<span>Miiduoa<span class="accent">.</span></span></h1></div>
+      <div class="intro-copy"><p>從校園應用，<br>到自己也會用的小工具。</p><p class="intro-detail">靜宜大學資訊管理學系。<br>目前主要開發 Campus One，<br>也做 API 工具、資料分析與瀏覽器應用。</p><a class="text-link" href="#work">看看作品 <span aria-hidden="true">↓</span></a></div>
+    </section>
     <section id="work" aria-labelledby="work-title">
-      <div class="section-title"><h2 id="work-title">主要專案</h2><p>程式、操作畫面與實作紀錄</p></div>
-      <article class="project" id="campus-one">
-        <div class="project-copy">
-          <p class="project-type">開發中的校園服務原型</p>
-          <h3>Campus One</h3>
-          <p>把課表、訊息、地圖和校園服務接在同一個 App 裡，同時提供 Web 介面。</p>
-          <ul><li>行動端與 Web 共用資料型別和角色規則。</li><li>權限檢查涵蓋頁面導向、後端與 Firebase rules。</li></ul>
-          <p>部分流程使用示範資料；外部服務串接依環境與憑證而定，不是正式校務系統。</p>
-          <p class="stack">Expo / React Native · Next.js · Firebase · TypeScript</p>
-          <div class="project-links"><a href="/case-studies/campus-one/">畫面與實作紀錄</a><a href="https://github.com/Miiduoa/graduation">原始碼</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/ARCHITECTURE_OVERVIEW.md">架構說明</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/TESTING_EVIDENCE.md">測試與限制</a></div>
-        </div>
-        <figure class="project-media phone"><a href="/case-studies/campus-one/" aria-label="查看 Campus One 介面與實作"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png" alt="Campus One 開發版本：學生端的校園服務入口" fetchpriority="high"></a><figcaption>學生端的校園服務入口。畫面為開發版本，功能狀態以專案文件為準。</figcaption></figure>
+      <div class="section-heading"><h2 id="work-title"><span class="index">01 /</span> 精選作品</h2><span class="section-aside">SELECTED WORK</span></div>
+      <article class="flagship" aria-labelledby="campus-title">
+        <div class="flagship-copy"><div class="project-meta"><span>校園服務</span><span class="status">開發中</span></div><h3 id="campus-title">Campus <br>One<span class="accent">.</span></h3><p class="project-description">課表、訊息、校園入口。<br>把每天要找的資訊，放回同一個地方。</p><p class="project-stack">Expo / React Native<br>Next.js · Firebase · TypeScript</p><div class="actions"><a class="button" href="/case-studies/campus-one/">查看專案 <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/Miiduoa/graduation">原始碼 <span aria-hidden="true">↗</span></a></div></div>
+        <figure class="campus-gallery"><div class="phone-pair">
+          <a class="phone first" data-preview data-caption="Campus One · 今日資訊 · 開發版本" href="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_01_today.png" aria-label="放大 Campus One 今日資訊畫面"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_01_today.png" alt="Campus One 學生端今日資訊" width="390" height="844" fetchpriority="high"></a>
+          <a class="phone second" data-preview data-caption="Campus One · 校園服務 · 開發版本" href="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png" aria-label="放大 Campus One 校園服務畫面"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png" alt="Campus One 學生端校園服務入口" width="390" height="844"></a>
+        </div><figcaption>開發版本，含示範資料。點擊畫面可放大查看。<span aria-hidden="true">↗</span></figcaption></figure>
       </article>
-      <article class="project" id="contractscope">
-        <div class="project-copy">
-          <p class="project-type">開發工具</p>
-          <h3>Contractscope</h3>
-          <p>比較兩版 OpenAPI 規格，列出刪除的操作、必填參數與型別變更。</p>
-          <ul><li>逐項查看受影響的 API、前後值與判斷規則。</li><li>瀏覽器與 CLI 共用比較核心，可匯出 JSON 報告。</li></ul>
-          <p class="stack">TypeScript · OpenAPI · CLI</p>
-          <div class="project-links"><a href="/contractscope/">開啟工具</a><a href="/case-studies/contractscope/">實作紀錄</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a><a href="https://github.com/Miiduoa/contractscope/blob/main/docs/rules.md">規則範圍</a></div>
-        </div>
-        <figure class="project-media contract"><a href="/contractscope/" aria-label="開啟 OpenAPI 比較工具"><img src="/assets/contractscope.png?v=20261008" alt="OpenAPI 比較結果，包含變更項目與前後參數" width="1440" height="900" loading="lazy"></a><figcaption>範例規格的比較結果；列出目前規則能辨識的變更。</figcaption></figure>
-      </article>
-      <article class="project" id="relaylab">
-        <div class="project-copy">
-          <p class="project-type">訊息投遞模擬器</p>
-          <h3>Relaylab</h3>
-          <p>同一筆資料已經寫入，確認訊息卻遺失了；再次投遞時，會不會重複寫入？</p>
-          <ul><li>逐步查看投遞、租約到期與重試，再用相同種子重播。</li><li>切換冪等寫入，區分「再次收到訊息」與「再次執行操作」。</li></ul>
-          <p class="stack">TypeScript · 離散事件模型 · CLI</p>
-          <div class="project-links"><a href="/relaylab/">操作模擬器</a><a href="/case-studies/relaylab/">實作紀錄</a><a href="https://github.com/Miiduoa/relaylab">原始碼</a><a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md">模型邊界</a></div>
-        </div>
-        <figure class="project-media"><a href="/relaylab/" aria-label="開啟訊息投遞模擬器"><img src="https://raw.githubusercontent.com/Miiduoa/relaylab/main/docs/screenshot.png" alt="Relaylab 的投遞時間軸與訊息檢視介面" loading="lazy"></a><figcaption>教學用模擬，沒有連接真實佇列或執行壓力測試。</figcaption></figure>
-      </article>
-      <article class="project" id="retail-ops">
-        <div class="project-copy">
-          <p class="project-type">資料分析原型</p>
-          <h3>Retail Ops DSS</h3>
-          <p>用銷量預測推算補貨和人力需求，並實作門市範圍與角色授權。</p>
-          <ul><li>以時間切分資料，比較預測模型與基準誤差。</li><li>提供補貨操作、權限檢查與稽核紀錄。</li></ul>
-          <p class="stack">Python · Streamlit · scikit-learn · SQLite</p>
-          <div class="project-links"><a href="https://github.com/Miiduoa/retail-ops-dss">程式與執行方式</a><a href="https://github.com/Miiduoa/retail-ops-dss/blob/main/src/access/policy.py">權限邏輯</a></div>
-        </div>
-        <figure class="project-media"><a href="https://github.com/Miiduoa/retail-ops-dss" aria-label="查看零售分析原型"><img src="https://raw.githubusercontent.com/Miiduoa/retail-ops-dss/main/docs/screenshots/01_forecast.png" alt="Retail Ops DSS 的銷量預測畫面" loading="lazy"></a><figcaption>使用固定種子的合成資料，展示分析和操作流程。</figcaption></figure>
-      </article>
+      <div class="project-grid">
+        <article class="project-card" aria-labelledby="contract-title"><a class="desktop-preview contract-preview" href="/contractscope/" aria-label="開啟 Contractscope API 比較工具"><span class="preview-label" aria-hidden="true">API CONTRACT REVIEW <span>↗</span></span><img src="/assets/contractscope.png" alt="Contractscope 比較兩份 API 規格的結果" width="1440" height="900" loading="lazy"></a><div class="card-heading"><h3 id="contract-title">Contractscope</h3><span class="card-index">02</span></div><p>API 改了什麼，哪些變更會影響呼叫端？<br>比較兩份規格，逐項查看原因。</p><div class="card-footer"><span>TypeScript · OpenAPI · CLI</span><div><a href="/contractscope/">開啟工具 ↗</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a></div></div></article>
+        <article class="project-card" aria-labelledby="relay-title"><a class="desktop-preview relay-preview" href="/relaylab/" aria-label="開啟 Relaylab 訊息投遞模擬器"><span class="preview-label" aria-hidden="true">MESSAGE DELIVERY LAB <span>↗</span></span><img src="/assets/relaylab.png" alt="Relaylab 訊息投遞時間軸與事件紀錄" width="1440" height="900" loading="lazy"></a><div class="card-heading"><h3 id="relay-title">Relaylab</h3><span class="card-index">03</span></div><p>訊息重送了，資料會不會也寫了兩次？<br>重播投遞過程，看見重試與競態。</p><div class="card-footer"><span>TypeScript · 事件模擬 · CLI</span><div><a href="/relaylab/">操作模擬 ↗</a><a href="https://github.com/Miiduoa/relaylab">原始碼</a></div></div></article>
+      </div>
+      <article class="research-row"><div><span class="eyebrow">04 / DATA & DECISIONS</span><h3>Retail Ops DSS</h3></div><p>從銷量預測到補貨建議，再到門市授權與操作紀錄。使用合成資料的零售營運原型。</p><a class="text-link" href="https://github.com/Miiduoa/retail-ops-dss">看實作 <span aria-hidden="true">↗</span></a></article>
     </section>
-    <section id="tools" class="tools" aria-labelledby="tools-title">
-      <div class="section-title"><h2 id="tools-title">小工具</h2><p>選一個檔案，完成一件事</p></div>
-      <ul class="tool-list">
-        <li><strong>Foldpress — PDF 小冊子</strong><p>排列雙面列印頁序，預覽後下載可對折裝訂的 PDF。</p><div class="tool-links"><a href="/foldpress/">開啟</a><a href="https://github.com/Miiduoa/foldpress">原始碼</a><a href="https://github.com/Miiduoa/foldpress/blob/main/docs/decisions.md">列印限制</a></div></li>
-        <li><strong>Roomtone — 音訊剪輯</strong><p>從波形選段，調整淡入淡出與音量，匯出 WAV。</p><div class="tool-links"><a href="/roomtone/">開啟</a><a href="https://github.com/Miiduoa/roomtone">原始碼</a></div></li>
-        <li><strong>Stillroom — 批次圖片處理</strong><p>調整尺寸、裁切與格式，將結果打包下載。</p><div class="tool-links"><a href="/stillroom/">開啟</a><a href="https://github.com/Miiduoa/stillroom">原始碼</a></div></li>
-        <li><strong>Cuework — 字幕時間</strong><p>編修 SRT / VTT，修正時間偏移與重疊。</p><div class="tool-links"><a href="/cuework/">開啟</a><a href="https://github.com/Miiduoa/cuework">原始碼與本機版</a></div></li>
-        <li><strong>Switchback — GPX 路線</strong><p>查看路線與海拔，分析選定的區段。</p><div class="tool-links"><a href="/switchback/">開啟</a><a href="https://github.com/Miiduoa/switchback">原始碼</a></div></li>
-        <li><strong>Motionbench — 動畫曲線</strong><p>調整彈簧與 Bézier 參數，預覽並匯出程式碼。</p><div class="tool-links"><a href="/motionbench/">開啟</a><a href="https://github.com/Miiduoa/motionbench">原始碼</a><a href="https://github.com/Miiduoa/motionbench/blob/main/docs/design.zh-TW.md">計算方式</a></div></li>
-        <li><strong>Tracefold — HAR 分析</strong><p>檢查網路請求的時間、傳輸量與失敗原因。</p><div class="tool-links"><a href="/tracefold/">開啟</a><a href="https://github.com/Miiduoa/tracefold">原始碼</a></div></li>
-        <li><strong>Patchday — SQLite 變更預演</strong><p>在獨立快照執行 migration，檢查結構與資料差異。</p><div class="tool-links"><a href="/patchday/">範例報告</a><a href="https://github.com/Miiduoa/patchday">原始碼與執行方式</a></div></li>
-      </ul>
+    <section id="tools" class="tools-section" aria-labelledby="tools-title">
+      <div class="section-heading"><h2 id="tools-title"><span class="index">02 /</span> 日常工具</h2><span class="section-aside">SMALL, USEFUL THINGS</span></div>
+      <div class="tools-intro"><p>不用先讀文件。<br><strong>選一個，直接開始。</strong></p><span>檔案處理、影音編輯與開發輔助。</span></div>
+      <div class="tool-grid">
+        <article class="tool"><span class="tool-number">01</span><div><h3><a href="/foldpress/">Foldpress <span aria-hidden="true">↗</span></a></h3><p>把 PDF 排成能對折裝訂的小冊子。</p></div><a class="tool-source" href="https://github.com/Miiduoa/foldpress" aria-label="Foldpress 原始碼">程式</a></article>
+        <article class="tool"><span class="tool-number">02</span><div><h3><a href="/roomtone/">Roomtone <span aria-hidden="true">↗</span></a></h3><p>從波形選段，剪輯並匯出音訊。</p></div><a class="tool-source" href="https://github.com/Miiduoa/roomtone" aria-label="Roomtone 原始碼">程式</a></article>
+        <article class="tool"><span class="tool-number">03</span><div><h3><a href="/stillroom/">Stillroom <span aria-hidden="true">↗</span></a></h3><p>一次調整多張圖片的尺寸與格式。</p></div><a class="tool-source" href="https://github.com/Miiduoa/stillroom" aria-label="Stillroom 原始碼">程式</a></article>
+        <article class="tool"><span class="tool-number">04</span><div><h3><a href="/cuework/">Cuework <span aria-hidden="true">↗</span></a></h3><p>編修字幕，對齊時間與修正重疊。</p></div><a class="tool-source" href="https://github.com/Miiduoa/cuework" aria-label="Cuework 原始碼">程式</a></article>
+      </div>
+      <details class="more-tools"><summary>還有路線分析、動畫曲線與開發工具 <span class="plus" aria-hidden="true">+</span></summary><div class="extra-grid"><a href="/switchback/"><strong>Switchback ↗</strong><span>GPX 路線與海拔分析</span></a><a href="/motionbench/"><strong>Motionbench ↗</strong><span>動畫曲線預覽與程式匯出</span></a><a href="/tracefold/"><strong>Tracefold ↗</strong><span>HAR 網路紀錄分析</span></a><a href="/patchday/"><strong>Patchday ↗</strong><span>SQLite 變更預演範例</span></a></div></details>
     </section>
-    <details class="experiments">
-      <summary>系統與數學模型實驗</summary>
-      <p>用固定情境觀察演算法和失敗處理。這些模擬的假設與限制寫在各自的說明中。</p>
-      <ul class="study-list">
-        <li><a href="/tools/carry/">Carry</a><span>貸款與現金購買的情境比較 · <a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/carry">計算方式</a></span></li>
-        <li><a href="/tools/capacity/">Capacity</a><span>Erlang C 排隊模型 · <a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/capacity">計算方式</a></span></li>
-        <li><a href="/labs/proofline/">Proofline</a><span>事件雜湊鏈與外部檢查點</span></li>
-        <li><a href="/labs/recovergrid/">Recovergrid</a><span>備份復原時間與資料缺口</span></li>
-        <li><a href="/labs/tracepath/">Tracepath</a><span>分散式追蹤</span></li>
-        <li><a href="/labs/flagrail/">Flagrail</a><span>功能旗標</span></li>
-        <li><a href="/labs/lineageguard/">LineageGuard</a><span>資料結構沿革</span></li>
-        <li><a href="/labs/txnscope/">TxnScope</a><span>樂觀鎖與衝突</span></li>
-        <li><a href="/labs/sessionsentry/">SessionSentry</a><span>工作階段</span></li>
-        <li><a href="/labs/eventlane/">Eventlane</a><span>事件投遞</span></li>
-        <li><a href="/labs/syncbench/">Syncbench</a><span>離線同步</span></li>
-        <li><a href="/labs/rampwatch/">Rampwatch</a><span>漸進發布</span></li>
-      </ul>
-    </details>
-    <details class="other-work"><summary>其他專案與競賽</summary><ul>
-      <li><a href="https://github.com/Miiduoa/competition-lab">Competition Lab</a> — 訓練程式、實驗筆記與成績紀錄；本地驗證與官方成績分開記錄。</li>
-      <li><a href="https://github.com/Miiduoa/nowrite">nowrite</a> — 文字轉手寫圖片與 PDF。</li>
-      <li><a href="https://github.com/Miiduoa/line-bot">LINE Webhook</a> — inbox / outbox、去重與失敗重試。</li>
-      <li><a href="https://github.com/Miiduoa/byline">Byline</a> — CSV dataset contract。</li>
-      <li><a href="https://github.com/Miiduoa/mymis">Product Analytics Lab</a> — A/B test、資料品質與 cohort 分析。</li>
-    </ul></details>
-    <section id="about" class="contact" aria-labelledby="contact-title"><h2 id="contact-title">聯絡</h2><p><a href="mailto:demohan513@gmail.com">demohan513@gmail.com</a> · <a href="https://github.com/Miiduoa/competition-lab">競賽紀錄</a></p></section>
+    <section id="about" class="about-section" aria-labelledby="about-title"><div class="about-heading"><span class="eyebrow">03 / ABOUT</span><h2 id="about-title">資訊管理，<br>也寫程式。</h2></div><div class="about-copy"><p>我是顧晉瑋，就讀靜宜大學資訊管理學系。從校園裡實際遇到的使用情境出發，練習把需求整理成可以操作的應用程式。</p><p>主要使用 TypeScript 與 Python。除了介面，也關心角色權限、資料處理，以及服務失敗時該怎麼接下去。</p><div class="about-links"><a class="text-link" href="https://github.com/Miiduoa/competition-lab">競賽與實驗紀錄 ↗</a><a class="text-link" href="https://github.com/Miiduoa/Miiduoa/blob/main/REPOSITORY_GUIDE.md">完整專案索引 ↗</a></div><a class="contact-link" href="mailto:demohan513@gmail.com">demohan513@gmail.com <span aria-hidden="true">↗</span></a></div></section>
+    <details class="archive"><summary>系統模型與早期實驗 <span class="plus" aria-hidden="true">+</span></summary><p>用小型情境理解系統機制；假設與限制記錄在各實驗中。</p><div class="archive-links"><a href="/tools/carry/">Carry</a><a href="/tools/capacity/">Capacity</a><a href="/labs/tracepath/">Tracepath</a><a href="/labs/flagrail/">Flagrail</a><a href="/labs/lineageguard/">LineageGuard</a><a href="/labs/txnscope/">TxnScope</a><a href="/labs/sessionsentry/">SessionSentry</a><a href="/labs/eventlane/">Eventlane</a><a href="/labs/syncbench/">Syncbench</a><a href="/labs/rampwatch/">Rampwatch</a><a href="/labs/recovergrid/">Recovergrid</a><a href="/labs/proofline/">Proofline</a></div></details>
   </main>
-  <footer><span>© 2026 顧晉瑋</span><a href="https://github.com/Miiduoa/Miiduoa.github.io/actions/workflows/lab-tests.yml">網站檢查</a><a href="https://github.com/Miiduoa/Miiduoa/blob/main/REPOSITORY_GUIDE.md">專案索引</a><a href="https://github.com/Miiduoa">GitHub</a></footer>
+  <footer><span>© 2026 顧晉瑋 / Miiduoa</span><a href="https://github.com/Miiduoa/Miiduoa.github.io">網站原始碼 ↗</a><a href="#top">回到頂端 ↑</a></footer>
 </div>
+<dialog id="preview-dialog" aria-labelledby="preview-caption"><div class="preview-toolbar"><p id="preview-caption"></p><button type="button" id="preview-close" autofocus aria-label="關閉預覽">關閉 <span aria-hidden="true">×</span></button></div><div class="preview-body"><img id="preview-image" alt="Campus One 畫面預覽"></div><div class="preview-controls"><button type="button" id="preview-prev" aria-label="上一張畫面">← 上一張</button><span id="preview-count" aria-live="polite"></span><button type="button" id="preview-next" aria-label="下一張畫面">下一張 →</button></div></dialog>
 </body>
 </html>
