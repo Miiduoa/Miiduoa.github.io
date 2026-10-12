@@ -41,9 +41,9 @@ h2 { font-size: 19px; font-weight: 600; margin: 0; }
 .project-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 17px; font-size: 14px; }
 .project-media { margin: 0; min-width: 0; }
 .project-media > a { display: block; background: #f6f7f8; border: 1px solid var(--line); overflow: hidden; }
-.project-media img { display: block; width: 100%; height: 265px; object-fit: cover; object-position: center; }
+.project-media img { display: block; width: 100%; height: 265px; object-fit: contain; object-position: center; }
 .project-media.phone img { height: 310px; object-fit: contain; background: #f6f7f8; }
-.project-media.contract img { object-position: center 80%; }
+.project-media.contract img { object-position: center; }
 .project-media figcaption { font-size: 12px; color: var(--secondary); margin-top: 9px; }
 .tools { margin-top: 44px; }
 .tool-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }

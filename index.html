@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 校園應用、OpenAPI 規格比較與零售資料分析，包含畫面、程式與測試紀錄。">
+  <meta name="description" content="顧晉瑋的軟體作品集。Campus One 校園應用、OpenAPI 規格比較、訊息投遞模擬與零售資料分析，包含畫面、程式與測試紀錄。">
   <title>顧晉瑋 — 作品集</title>
   <link rel="canonical" href="https://miiduoa.github.io/">
   <meta property="og:type" content="website">
@@ -13,16 +13,16 @@
   <meta property="og:title" content="顧晉瑋 — 軟體作品集">
   <meta property="og:description" content="Campus One 校園應用、API 規格比較、訊息投遞模擬與零售分析。查看實作、畫面與測試。">
   <meta property="og:url" content="https://miiduoa.github.io/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/graduation/main/apps/mobile/ai_first_tabs.png">
-  <meta property="og:image:alt" content="Campus One 校園應用程式行動端介面">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png">
+  <meta property="og:image:alt" content="Campus One 開發版本：學生端的校園服務入口">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="顧晉瑋 — 軟體作品集">
-  <meta name="twitter:description" content="校園應用、API 規格比較與零售資料分析的實作紀錄。">
+  <meta name="twitter:description" content="校園應用、API 規格比較、訊息投遞模擬與零售資料分析的實作紀錄。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"顧晉瑋","url":"https://miiduoa.github.io/","affiliation":{"@type":"CollegeOrUniversity","name":"Providence University"},"sameAs":["https://github.com/Miiduoa","https://www.kaggle.com/kuchinwei"]}
+  {"@context":"https://schema.org","@type":"Person","name":"顧晉瑋","url":"https://miiduoa.github.io/","affiliation":{"@type":"CollegeOrUniversity","name":"Providence University"},"sameAs":["https://github.com/Miiduoa"]}
   </script>
-  <link rel="stylesheet" href="/home.css?v=20261010">
+  <link rel="stylesheet" href="/home.css?v=20261012">
 </head>
 <body>
 <a class="skip" href="#work">跳到專案</a>
@@ -35,21 +35,22 @@
     <header class="intro">
       <h1>顧晉瑋</h1>
       <p>靜宜大學資訊管理學系。</p>
-      <p>目前主要維護 Campus One，處理校園服務在行動端與 Web 之間的資料、登入和角色權限。這裡也收錄 API 規格比較、零售資料分析與幾個檔案處理工具。</p>
-      <p class="intro-links"><a href="/case-studies/campus-one/">先看 Campus One 的畫面與實作</a><a href="#tools">直接使用小工具</a></p>
+      <p>目前主要維護 Campus One，處理校園服務在行動端與 Web 之間的資料、登入和角色權限。這裡也收錄 API 規格比較、訊息投遞模擬、零售資料分析與幾個檔案處理工具。</p>
+      <p class="intro-links"><a href="/case-studies/campus-one/">先看 Campus One 的畫面與實作</a><a href="#tools">直接使用小工具</a><a href="https://github.com/Miiduoa/Miiduoa/blob/main/REPOSITORY_GUIDE.md">按主題閱讀程式</a></p>
     </header>
     <section id="work" aria-labelledby="work-title">
       <div class="section-title"><h2 id="work-title">主要專案</h2><p>程式、操作畫面與實作紀錄</p></div>
       <article class="project" id="campus-one">
         <div class="project-copy">
-          <p class="project-type">校園應用程式</p>
+          <p class="project-type">開發中的校園服務原型</p>
           <h3>Campus One</h3>
           <p>把課表、訊息、地圖和校園服務接在同一個 App 裡，同時提供 Web 介面。</p>
           <ul><li>行動端與 Web 共用資料型別和角色規則。</li><li>權限檢查涵蓋頁面導向、後端與 Firebase rules。</li></ul>
+          <p>部分流程使用示範資料；外部服務串接依環境與憑證而定，不是正式校務系統。</p>
           <p class="stack">Expo / React Native · Next.js · Firebase · TypeScript</p>
-          <div class="project-links"><a href="/case-studies/campus-one/">畫面與實作紀錄</a><a href="https://github.com/Miiduoa/graduation">原始碼</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/REVIEW_IN_2_MINUTES.md">程式導讀</a><a href="https://github.com/Miiduoa/graduation/actions">測試狀態</a></div>
+          <div class="project-links"><a href="/case-studies/campus-one/">畫面與實作紀錄</a><a href="https://github.com/Miiduoa/graduation">原始碼</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/ARCHITECTURE_OVERVIEW.md">架構說明</a><a href="https://github.com/Miiduoa/graduation/blob/main/docs/TESTING_EVIDENCE.md">測試與限制</a></div>
         </div>
-        <figure class="project-media phone"><a href="/case-studies/campus-one/" aria-label="查看 Campus One 介面與實作"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/main/apps/mobile/ai_first_tabs.png" alt="Campus One 行動端課程與服務入口" fetchpriority="high"></a><figcaption>行動端開發畫面。部署與測試進度列在專案文件中。</figcaption></figure>
+        <figure class="project-media phone"><a href="/case-studies/campus-one/" aria-label="查看 Campus One 介面與實作"><img src="https://raw.githubusercontent.com/Miiduoa/graduation/51205ceb9f4b2b5940da64559bbdd2aabc8beac7/docs/mobile-screenshots/m_student_03_campus.png" alt="Campus One 開發版本：學生端的校園服務入口" fetchpriority="high"></a><figcaption>學生端的校園服務入口。畫面為開發版本，功能狀態以專案文件為準。</figcaption></figure>
       </article>
       <article class="project" id="contractscope">
         <div class="project-copy">
@@ -61,6 +62,17 @@
           <div class="project-links"><a href="/contractscope/">開啟工具</a><a href="/case-studies/contractscope/">實作紀錄</a><a href="https://github.com/Miiduoa/contractscope">原始碼</a><a href="https://github.com/Miiduoa/contractscope/blob/main/docs/rules.md">規則範圍</a></div>
         </div>
         <figure class="project-media contract"><a href="/contractscope/" aria-label="開啟 OpenAPI 比較工具"><img src="/assets/contractscope.png?v=20261008" alt="OpenAPI 比較結果，包含變更項目與前後參數" width="1440" height="900" loading="lazy"></a><figcaption>範例規格的比較結果；列出目前規則能辨識的變更。</figcaption></figure>
+      </article>
+      <article class="project" id="relaylab">
+        <div class="project-copy">
+          <p class="project-type">訊息投遞模擬器</p>
+          <h3>Relaylab</h3>
+          <p>同一筆資料已經寫入，確認訊息卻遺失了；再次投遞時，會不會重複寫入？</p>
+          <ul><li>逐步查看投遞、租約到期與重試，再用相同種子重播。</li><li>切換冪等寫入，區分「再次收到訊息」與「再次執行操作」。</li></ul>
+          <p class="stack">TypeScript · 離散事件模型 · CLI</p>
+          <div class="project-links"><a href="/relaylab/">操作模擬器</a><a href="/case-studies/relaylab/">實作紀錄</a><a href="https://github.com/Miiduoa/relaylab">原始碼</a><a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md">模型邊界</a></div>
+        </div>
+        <figure class="project-media"><a href="/relaylab/" aria-label="開啟訊息投遞模擬器"><img src="https://raw.githubusercontent.com/Miiduoa/relaylab/main/docs/screenshot.png" alt="Relaylab 的投遞時間軸與訊息檢視介面" loading="lazy"></a><figcaption>教學用模擬，沒有連接真實佇列或執行壓力測試。</figcaption></figure>
       </article>
       <article class="project" id="retail-ops">
         <div class="project-copy">
@@ -90,7 +102,6 @@
     <details class="experiments">
       <summary>系統與數學模型實驗</summary>
       <p>用固定情境觀察演算法和失敗處理。這些模擬的假設與限制寫在各自的說明中。</p>
-      <div class="experiment-lead"><h3>Relaylab — 訊息重試</h3><p>同一筆寫入成功後，確認訊息遺失會發生什麼？逐步檢查投遞、租約到期與重複寫入，再用相同種子重播。</p><div class="tool-links"><a href="/relaylab/">操作模擬</a><a href="https://github.com/Miiduoa/relaylab">原始碼</a><a href="/case-studies/relaylab/">實作紀錄</a><a href="https://github.com/Miiduoa/relaylab/blob/main/docs/model.md">模型假設</a></div></div>
       <ul class="study-list">
         <li><a href="/tools/carry/">Carry</a><span>貸款與現金購買的情境比較 · <a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/carry">計算方式</a></span></li>
         <li><a href="/tools/capacity/">Capacity</a><span>Erlang C 排隊模型 · <a href="https://github.com/Miiduoa/Miiduoa.github.io/tree/main/tools/capacity">計算方式</a></span></li>
@@ -106,15 +117,16 @@
         <li><a href="/labs/rampwatch/">Rampwatch</a><span>漸進發布</span></li>
       </ul>
     </details>
-    <details class="other-work"><summary>其他專案</summary><ul>
+    <details class="other-work"><summary>其他專案與競賽</summary><ul>
+      <li><a href="https://github.com/Miiduoa/competition-lab">Competition Lab</a> — 訓練程式、實驗筆記與成績紀錄；本地驗證與官方成績分開記錄。</li>
       <li><a href="https://github.com/Miiduoa/nowrite">nowrite</a> — 文字轉手寫圖片與 PDF。</li>
       <li><a href="https://github.com/Miiduoa/line-bot">LINE Webhook</a> — inbox / outbox、去重與失敗重試。</li>
       <li><a href="https://github.com/Miiduoa/byline">Byline</a> — CSV dataset contract。</li>
       <li><a href="https://github.com/Miiduoa/mymis">Product Analytics Lab</a> — A/B test、資料品質與 cohort 分析。</li>
     </ul></details>
-    <section id="about" class="contact" aria-labelledby="contact-title"><h2 id="contact-title">聯絡</h2><p><a href="mailto:demohan513@gmail.com">demohan513@gmail.com</a> · <a href="https://www.kaggle.com/kuchinwei">Kaggle</a></p></section>
+    <section id="about" class="contact" aria-labelledby="contact-title"><h2 id="contact-title">聯絡</h2><p><a href="mailto:demohan513@gmail.com">demohan513@gmail.com</a> · <a href="https://github.com/Miiduoa/competition-lab">競賽紀錄</a></p></section>
   </main>
-  <footer><span>© 2026 顧晉瑋</span><a href="https://github.com/Miiduoa/Miiduoa.github.io/actions/workflows/lab-tests.yml">網站檢查</a><a href="https://github.com/Miiduoa">GitHub</a></footer>
+  <footer><span>© 2026 顧晉瑋</span><a href="https://github.com/Miiduoa/Miiduoa.github.io/actions/workflows/lab-tests.yml">網站檢查</a><a href="https://github.com/Miiduoa/Miiduoa/blob/main/REPOSITORY_GUIDE.md">專案索引</a><a href="https://github.com/Miiduoa">GitHub</a></footer>
 </div>
 </body>
 </html>
